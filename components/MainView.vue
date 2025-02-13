@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { XCircleIcon } from '@heroicons/vue/24/outline';
+import MainPresentationSection from './MainPresentationSection.vue';
 
 type SelectableSection = 'about-me' | 'portfolio' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
@@ -16,9 +17,7 @@ const sections = [
         <div class="main-picture men" />
 
         <div class="bl-main transition-all">
-            <section class="text-white">
-                Mon portfolio
-            </section>
+            <MainPresentationSection />
 
             <section
                 v-for="section in sections"
