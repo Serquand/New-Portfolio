@@ -1,14 +1,35 @@
 <script setup lang="ts">
 import { XCircleIcon } from '@heroicons/vue/24/outline';
+import AboutMeSection from './AboutMeSection.vue';
+import GetInToucheSection from './GetInToucheSection.vue';
 import MainPresentationSection from './MainPresentationSection.vue';
+import MyProjectsSection from './MyProjectsSection.vue';
 
 type SelectableSection = 'about-me' | 'portfolio' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
 
 const sections = [
-    { id: 'about-me', beginTitle: 'About', endTitle: 'Me', position: 'top-0 right-0' },
-    { id: 'portfolio', beginTitle: 'My', endTitle: 'Portfolio', position: 'bottom-0 left-0' },
-    { id: 'get-in-touch', beginTitle: 'Get', endTitle: 'In Touch', position: 'bottom-0 right-0' },
+    {
+        id: 'about-me',
+        beginTitle: 'About',
+        endTitle: 'Me',
+        position: 'top-0 right-0',
+        component: AboutMeSection,
+    },
+    {
+        id: 'portfolio',
+        beginTitle: 'My',
+        endTitle: 'Portfolio',
+        position: 'bottom-0 left-0',
+        component: MyProjectsSection,
+    },
+    {
+        id: 'get-in-touch',
+        beginTitle: 'Get',
+        endTitle: 'In Touch',
+        position: 'bottom-0 right-0',
+        component: GetInToucheSection,
+    },
 ] as const;
 </script>
 
@@ -32,9 +53,14 @@ const sections = [
                     @click="() => selectedSection = section.id"
                 />
 
+                <component
+                    :is="section.component"
+                    v-if="selectedSection === section.id"
+                />
+
                 <XCircleIcon
                     v-if="selectedSection === section.id"
-                    class="size-7 absolute top-4 right-4 cursor-pointer"
+                    class="size-12 absolute top-8 right-12 cursor-pointer"
                     @click="selectedSection = null"
                 />
             </section>
