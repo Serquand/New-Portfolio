@@ -44,7 +44,7 @@ const sections = [
 
 <style scoped lang="scss">
 .main-picture.men {
-    background-image: url("/men.avif");
+    background-image: url("/bombe.avif");
     padding: 0;
     margin-top: 24px;
     margin-left: 24px;
