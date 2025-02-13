@@ -14,9 +14,9 @@ const sections = [
 
 <template>
     <main class="flex pr-6">
-        <div class="main-picture men" />
+        <div class="main-picture men hidden lg:block" />
 
-        <div class="bl-main transition-all">
+        <div class="bl-main lg:w-2/3 w-full transition-all">
             <MainPresentationSection />
 
             <section
@@ -60,7 +60,6 @@ const sections = [
     margin-top: 24px;
     height: calc(100vh - 48px);
     overflow: hidden;
-    width: 66.6666666667%;
     margin-left: 24px;
     gap: 20px;
 
