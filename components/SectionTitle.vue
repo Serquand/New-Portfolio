@@ -14,19 +14,19 @@ defineProps<Props>();
                 {{ beginTitle }} {{ endTitle }}
             </h3>
 
-            <div class="text-white top-0 group-hover:top-[105%] transition-all absolute">
+            <div class="text-white top-0 group-hover:top-[105%] duration-300 transition-all absolute">
                 {{ beginTitle }}
             </div>
 
-            <div class="text-[#daa520] group-hover:bottom-0 transition-all absolute bottom-[105%]">
+            <div class="text-[#daa520] group-hover:bottom-0 transition-all duration-300 absolute bottom-[105%]">
                 {{ beginTitle }}
             </div>
 
-            <div class="text-[#daa520] bottom-0 group-hover:bottom-[105%] transition-all absolute right-0">
+            <div class="text-[#daa520] bottom-0 group-hover:bottom-[105%] duration-300 transition-all absolute right-0">
                 {{ endTitle }}
             </div>
 
-            <div class="text-white absolute group-hover:top-0 transition-all top-[105%] right-0">
+            <div class="text-white absolute group-hover:top-0 transition-all duration-300 top-[105%] right-0">
                 {{ endTitle }}
             </div>
         </div>
