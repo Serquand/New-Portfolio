@@ -1,67 +1,40 @@
 <script setup lang="ts">
 import { XCircleIcon } from '@heroicons/vue/24/outline';
 
-type SelectableSection = "about-me" | "portfolio" | "get-in-touch" | null;
+type SelectableSection = 'about-me' | 'portfolio' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
+
+const sections = [
+    { id: 'about-me', beginTitle: 'About', endTitle: 'Me', position: 'top-0 right-0' },
+    { id: 'portfolio', beginTitle: 'My', endTitle: 'Portfolio', position: 'bottom-0 left-0' },
+    { id: 'get-in-touch', beginTitle: 'Get', endTitle: 'In Touch', position: 'bottom-0 right-0' },
+] as const;
 </script>
 
 <template>
     <main class="flex pr-6">
         <div class="main-picture men" />
+
         <div class="bl-main transition-all">
             <section class="text-white">
                 Mon portfolio
             </section>
 
             <section
-                class="text-white absolute top-0 right-0 bg-[#222]"
-                :class="[selectedSection === 'about-me' ? 'selected' : '']"
+                v-for="section in sections"
+                :key="section.id"
+                class="text-white absolute bg-[#222]"
+                :class="[section.position, selectedSection === section.id ? 'selected' : '']"
             >
                 <SectionTitle
                     v-if="!selectedSection"
-                    begin-title="About"
-                    end-title="Me"
-                    @click="() => selectedSection = 'about-me'"
+                    :begin-title="section.beginTitle"
+                    :end-title="section.endTitle"
+                    @click="() => selectedSection = section.id"
                 />
 
                 <XCircleIcon
-                    v-if="selectedSection === 'about-me'"
-                    class="size-7 absolute top-4 right-4 cursor-pointer"
-                    @click="selectedSection = null"
-                />
-            </section>
-
-            <section
-                class="text-white absolute bottom-0 left-0 bg-[#222]"
-                :class="[selectedSection === 'portfolio' ? 'selected' : '']"
-            >
-                <SectionTitle
-                    v-if="!selectedSection"
-                    begin-title="My"
-                    end-title="Portfolio"
-                    @click="() => selectedSection = 'portfolio'"
-                />
-
-                <XCircleIcon
-                    v-if="selectedSection === 'portfolio'"
-                    class="size-7 absolute top-4 right-4 cursor-pointer"
-                    @click="selectedSection = null"
-                />
-            </section>
-
-            <section
-                class="text-white absolute bottom-0 right-0 bg-[#222]"
-                :class="[selectedSection === 'get-in-touch' ? 'selected' : '']"
-            >
-                <SectionTitle
-                    v-if="!selectedSection"
-                    begin-title="Get"
-                    end-title="In Touch"
-                    @click="() => selectedSection = 'get-in-touch'"
-                />
-
-                <XCircleIcon
-                    v-if="selectedSection === 'get-in-touch'"
+                    v-if="selectedSection === section.id"
                     class="size-7 absolute top-4 right-4 cursor-pointer"
                     @click="selectedSection = null"
                 />
