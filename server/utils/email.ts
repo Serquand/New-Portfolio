@@ -1,5 +1,5 @@
 import type { SendMailOptions, Transporter } from 'nodemailer';
-import type { InfoMail } from './types';
+import type { InfoMail } from '../../tools/types';
 import nodemailer from 'nodemailer';
 
 const transporter: Transporter = nodemailer.createTransport({

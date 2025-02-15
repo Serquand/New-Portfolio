@@ -6,3 +6,9 @@ export interface Project {
     client: string,
     usedTechnologies: string[],
 }
+
+export interface InfoMail {
+    emailTo: string,
+    subject: string,
+    messageContent: string,
+}
