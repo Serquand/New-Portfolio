@@ -1,0 +1,44 @@
+[
+    {
+        "id": "first_article",
+        "name": "La Coupe des Régions",
+        "urlToGo": "https://coupedesregions.com",
+        "description": "La Coupe Des Régions est une association proposant différentes activités eSportives sur le jeu Clash of Clans. Cette association a confié le développement de leur site Web à notre équipe.",
+        "mainPhotoUrl": "/Projects/CoupeDesRegions.png"
+    },
+    {
+        "id": "second_article",
+        "name": "Le Parapheur",
+        "urlToGo": "https://le-parapheur.fr",
+        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
+        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png"
+    },
+    {
+        "id": "third_article",
+        "name": "Ma Salle Publique",
+        "urlToGo": "https://sallepublique.fr",
+        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
+        "mainPhotoUrl": "/Projects/SallePublique.png"
+    },
+    {
+        "id": "first_article",
+        "name": "La Coupe des Régions",
+        "urlToGo": "https://coupedesregions.com",
+        "description": "La Coupe Des Régions est une association proposant différentes activités eSportives sur le jeu Clash of Clans. Cette association a confié le développement de leur site Web à notre équipe.",
+        "mainPhotoUrl": "/Projects/CoupeDesRegions.png"
+    },
+    {
+        "id": "second_article",
+        "name": "Le Parapheur",
+        "urlToGo": "https://le-parapheur.fr",
+        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
+        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png"
+    },
+    {
+        "id": "third_article",
+        "name": "Ma Salle Publique",
+        "urlToGo": "https://sallepublique.fr",
+        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
+        "mainPhotoUrl": "/Projects/SallePublique.png"
+    }
+]

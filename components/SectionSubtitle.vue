@@ -29,6 +29,6 @@ defineProps<Props>();
 
     <SeparatorTitleContent
         :separator-icon="separatorIcon"
-        class="mt-14"
+        class="mt-14 mb-12"
     />
 </template>

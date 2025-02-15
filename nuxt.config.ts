@@ -16,5 +16,6 @@ export default defineNuxtConfig({
         viewport: 'width=device-width, initial-scale=1',
         htmlAttrs: { class: 'h-full bg-white' },
         bodyAttrs: { class: 'h-full bg-[#111]' },
+        title: 'Esteban VINCENT - Portfolio',
     } },
 });

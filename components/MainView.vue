@@ -5,7 +5,7 @@ import GetInToucheSection from './GetInToucheSection.vue';
 import MainPresentationSection from './MainPresentationSection.vue';
 import MyProjectsSection from './MyProjectsSection.vue';
 
-type SelectableSection = 'about-me' | 'portfolio' | 'get-in-touch' | null;
+type SelectableSection = 'about-me' | 'projects' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
 
 const sections = [
@@ -17,9 +17,9 @@ const sections = [
         component: AboutMeSection,
     },
     {
-        id: 'portfolio',
+        id: 'projects',
         beginTitle: 'My',
-        endTitle: 'Portfolio',
+        endTitle: 'Projects',
         position: 'bottom-0 left-0',
         component: MyProjectsSection,
     },
@@ -84,8 +84,8 @@ const sections = [
     position: relative;
     width: 100%;
     margin-top: 24px;
-    height: calc(100vh - 48px);
-    overflow: hidden;
+    overflow: auto;
+    scrollbar-width: none;
     margin-left: 24px;
     gap: 20px;
 
