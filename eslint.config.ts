@@ -60,6 +60,7 @@ export default antfu({
             },
             multilineDetection: 'brackets',
         }],
+        'node/prefer-global/process': ['off'],
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
 
     },
