@@ -11,11 +11,22 @@ export default defineNuxtConfig({
             tailwindcss(),
         ],
     },
-    app: { head: {
-        charset: 'utf-8',
-        viewport: 'width=device-width, initial-scale=1',
-        htmlAttrs: { class: 'h-full bg-white' },
-        bodyAttrs: { class: 'h-full bg-[#111]' },
-        title: 'Esteban VINCENT - Portfolio',
-    } },
+    modules: [
+        '@vesp/nuxt-fontawesome',
+    ],
+    app: {
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1',
+            htmlAttrs: { class: 'h-full bg-white' },
+            bodyAttrs: { class: 'h-full bg-[#111]' },
+            title: 'Esteban VINCENT - Portfolio',
+            link: [
+                {
+                    rel: 'stylesheet',
+                    href: 'https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/font/octicons.min.css', // GitHub Octicons CDN
+                },
+            ],
+        }
+    },
 });
