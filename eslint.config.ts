@@ -62,6 +62,6 @@ export default antfu({
         }],
         'node/prefer-global/process': ['off'],
         'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
-
+        'ts/ban-ts-comment': ['off'],
     },
 });

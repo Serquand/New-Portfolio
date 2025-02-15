@@ -77,7 +77,7 @@ function handleCloseProjectInformation() {
 
         <div
             class="relative bl-main lg:w-2/3 w-full transition-all"
-            :class="[projectToDisplayInformation ? 'overflow-hidden' : 'overflow-auto']"
+            :class="[isProjectInformationVisible ? 'overflow-hidden' : 'overflow-auto']"
         >
             <div>
                 <MainPresentationSection />
@@ -110,7 +110,8 @@ function handleCloseProjectInformation() {
             </div>
 
             <section
-                class="absolute z-50 project-display transition-all duration-750 bg-[#222]"
+                v-if="projectToDisplayInformation"
+                class="absolute project-display transition-all duration-750 bg-[#222]"
                 :class="[isProjectInformationVisible ? 'top-0' : 'top-[100%]']"
             >
                 <ProjectInformation
