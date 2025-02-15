@@ -16,7 +16,7 @@ const emits = defineEmits<{
 </script>
 
 <template>
-    <div class="relative size-full text-white bg-[#222]">
+    <div class="relative text-white size-full">
         <XCircleIcon
             class="size-12 absolute top-8 right-12 cursor-pointer"
             @click="() => emits('close-project-information')"

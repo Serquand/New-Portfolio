@@ -10,6 +10,7 @@ import MyProjectsSection from './MyProjectsSection.vue';
 type SelectableSection = 'about-me' | 'projects' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
 const projectToDisplayInformation = ref<Project | null>(null);
+const isProjectInformationVisible = ref(false);
 
 const sections = [
     {
@@ -37,6 +38,7 @@ const sections = [
 
 function handleDisplayProjectInformations(projectId: string) {
     projectToDisplayInformation.value = projects.find(project => project.id === projectId) ?? null;
+    isProjectInformationVisible.value = true;
 }
 
 function handleGoToNextProject() {
@@ -60,49 +62,63 @@ function handleGoToPreviousProject() {
     const previousProjectId = (currentIndex - 1 + projects.length) % projects.length;
     projectToDisplayInformation.value = projects[previousProjectId];
 }
+
+function handleCloseProjectInformation() {
+    isProjectInformationVisible.value = false;
+    setTimeout(() => {
+        projectToDisplayInformation.value = null;
+    }, 300);
+}
 </script>
 
 <template>
     <main class="flex pr-6">
         <div class="main-picture men hidden lg:block" />
 
-        <div class="bl-main lg:w-2/3 w-full overflow-hidden transition-all">
-            <MainPresentationSection />
+        <div
+            class="relative bl-main lg:w-2/3 w-full transition-all"
+            :class="[projectToDisplayInformation ? 'overflow-hidden' : 'overflow-auto']"
+        >
+            <div>
+                <MainPresentationSection />
+
+                <section
+                    v-for="section in sections"
+                    :key="section.id"
+                    class="text-white absolute bg-[#222]"
+                    :class="[section.position, selectedSection === section.id ? 'selected' : '']"
+                >
+                    <SectionTitle
+                        v-if="!selectedSection"
+                        :begin-title="section.beginTitle"
+                        :end-title="section.endTitle"
+                        @click="() => selectedSection = section.id"
+                    />
+
+                    <component
+                        :is="section.component"
+                        v-if="selectedSection === section.id"
+                        @see-project-information="handleDisplayProjectInformations"
+                    />
+
+                    <XCircleIcon
+                        v-if="selectedSection === section.id"
+                        class="size-12 absolute top-8 right-12 cursor-pointer"
+                        @click="selectedSection = null"
+                    />
+                </section>
+            </div>
 
             <section
-                v-for="section in sections"
-                :key="section.id"
-                class="text-white absolute bg-[#222]"
-                :class="[section.position, selectedSection === section.id ? 'selected' : '']"
-            >
-                <SectionTitle
-                    v-if="!selectedSection"
-                    :begin-title="section.beginTitle"
-                    :end-title="section.endTitle"
-                    @click="() => selectedSection = section.id"
-                />
-
-                <component
-                    :is="section.component"
-                    v-if="selectedSection === section.id"
-                    @see-project-information="handleDisplayProjectInformations"
-                />
-
-                <XCircleIcon
-                    v-if="selectedSection === section.id"
-                    class="size-12 absolute top-8 right-12 cursor-pointer"
-                    @click="selectedSection = null"
-                />
-            </section>
-
-            <section
-                v-if="projectToDisplayInformation"
-                class="absolute bg-[#123] project-display"
+                class="absolute z-50 project-display transition-all duration-750 bg-[#222]"
+                :class="[isProjectInformationVisible ? 'top-0' : 'top-[100%]']"
             >
                 <ProjectInformation
+                    v-if="projectToDisplayInformation"
                     :project-to-display="projectToDisplayInformation"
                     @go-to-previous-project="handleGoToPreviousProject"
                     @go-to-next-project="handleGoToNextProject"
+                    @close-project-information="handleCloseProjectInformation"
                 />
             </section>
         </div>
@@ -118,14 +134,13 @@ function handleGoToPreviousProject() {
     height: calc(100vh - 48px);
     background-size: cover;
     background-position: center center;
-    width: calc(33.3333333333% - 24px);
+    width: 40%;
 }
 
 .bl-main {
     position: relative;
     width: 100%;
     margin-top: 24px;
-    overflow: auto;
     scrollbar-width: none;
     margin-left: 24px;
     gap: 20px;
@@ -139,7 +154,6 @@ function handleGoToPreviousProject() {
             height: 100%;
             width: 100%;
             z-index: 30;
-            top: 100%;
         }
 
         &:not(.project-display) {
@@ -154,6 +168,15 @@ function handleGoToPreviousProject() {
                 width: 100%;
             }
         }
+    }
+}
+
+@keyframes go-up {
+    from {
+        top: 100%;
+    }
+    to {
+        top: 0;
     }
 }
 </style>

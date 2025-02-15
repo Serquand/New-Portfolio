@@ -46,5 +46,13 @@
         "mainPhotoUrl": "/Projects/SallePublique.png",
         "client": "Le Parapheur",
         "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
+    },
+    {
+        "id": "7",
+        "name": "Ma Salle Publique",
+        "urlToGo": "https://sallepublique.fr",
+        "mainPhotoUrl": "/Projects/SallePublique.png",
+        "client": "Le Parapheur",
+        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
     }
 ]
