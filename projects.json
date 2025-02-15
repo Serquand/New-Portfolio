@@ -1,44 +1,50 @@
 [
     {
-        "id": "first_article",
+        "id": "1",
         "name": "La Coupe des Régions",
         "urlToGo": "https://coupedesregions.com",
-        "description": "La Coupe Des Régions est une association proposant différentes activités eSportives sur le jeu Clash of Clans. Cette association a confié le développement de leur site Web à notre équipe.",
-        "mainPhotoUrl": "/Projects/CoupeDesRegions.png"
+        "mainPhotoUrl": "/Projects/CoupeDesRegions.png",
+        "client": "Coupe des Régions",
+        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "Express", "JavaScript", "TypeScript", "MySQL", "Sequelize"]
     },
     {
-        "id": "second_article",
+        "id": "2",
         "name": "Le Parapheur",
         "urlToGo": "https://le-parapheur.fr",
-        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
-        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png"
+        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png",
+        "client": "Le Parapheur",
+        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "JavaScript", "TypeScript", "Django", "Python", "PostgreSQL"]
     },
     {
-        "id": "third_article",
+        "id": "3",
         "name": "Ma Salle Publique",
         "urlToGo": "https://sallepublique.fr",
-        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
-        "mainPhotoUrl": "/Projects/SallePublique.png"
+        "mainPhotoUrl": "/Projects/SallePublique.png",
+        "client": "Le Parapheur",
+        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
     },
     {
-        "id": "first_article",
+        "id": "4",
         "name": "La Coupe des Régions",
         "urlToGo": "https://coupedesregions.com",
-        "description": "La Coupe Des Régions est une association proposant différentes activités eSportives sur le jeu Clash of Clans. Cette association a confié le développement de leur site Web à notre équipe.",
-        "mainPhotoUrl": "/Projects/CoupeDesRegions.png"
+        "mainPhotoUrl": "/Projects/CoupeDesRegions.png",
+        "client": "Coupe des Régions",
+        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "Express", "JavaScript", "TypeScript", "MySQL", "Sequelize"]
     },
     {
-        "id": "second_article",
+        "id": "5",
         "name": "Le Parapheur",
         "urlToGo": "https://le-parapheur.fr",
-        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
-        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png"
+        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png",
+        "client": "Le Parapheur",
+        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "JavaScript", "TypeScript", "Django", "Python", "PostgreSQL"]
     },
     {
-        "id": "third_article",
+        "id": "6",
         "name": "Ma Salle Publique",
         "urlToGo": "https://sallepublique.fr",
-        "description": "Développement du site vitrine pour l'entreprise Le Parapheur",
-        "mainPhotoUrl": "/Projects/SallePublique.png"
+        "mainPhotoUrl": "/Projects/SallePublique.png",
+        "client": "Le Parapheur",
+        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
     }
 ]

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { WalletIcon } from '@heroicons/vue/24/outline';
 import projects from '../projects.json';
+
+const emits = defineEmits<{ (e: 'see-project-information', projectToSeeId: string): void }>();
 </script>
 
 <template>
@@ -16,6 +18,8 @@ import projects from '../projects.json';
             :key="project.id"
             :project-title="project.name"
             :projet-image-url="project.mainPhotoUrl"
+            :project-id="project.id"
+            @see-project-information="projectId => emits('see-project-information', projectId)"
         />
     </div>
 </template>

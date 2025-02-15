@@ -6,13 +6,14 @@ type Location = 'top' | 'right' | 'bottom' | 'left';
 interface Props {
     projectTitle: string,
     projetImageUrl: string,
+    projectId: string,
 }
 
 defineProps<Props>();
 
+const emits = defineEmits<{ (e: 'see-project-information', projectToSeeId: string): void }>();
 const locationEntered = ref<Location | null>(null);
 const leaving = ref<Location | null>(null);
-
 function handleMouseEnterProject(event: MouseEvent) {
     leaving.value = null; // Reset exit animation
     const newLocation = findFromWhereMouseEnter(event);
@@ -63,6 +64,7 @@ function findFromWhereMouseEnter(event: MouseEvent): Location {
         :style="{ backgroundImage: `url(${projetImageUrl})` }"
         @mouseenter="handleMouseEnterProject"
         @mouseleave="handleMouseLeaveProject"
+        @click="() => emits('see-project-information', projectId)"
     >
         <div
             class="absolute bg-[#daa520] size-full opacity-0 flex items-center justify-center"
@@ -72,7 +74,7 @@ function findFromWhereMouseEnter(event: MouseEvent): Location {
                 (locationEntered || leaving) ? 'filter-visible' : '',
             ]"
         >
-            <h3 class="text-3xl font-black">
+            <h3 class="text-center text-3xl font-black">
                 {{ projectTitle }}
             </h3>
         </div>
