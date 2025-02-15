@@ -1,5 +1,5 @@
 import type { APIEmbedField, Channel, Embed, TextBasedChannel } from 'discord.js';
-import type { InfoMail } from './types';
+import type { InfoMail } from '../../tools/types';
 import { Client, EmbedBuilder } from 'discord.js';
 
 export const contactMailChannel = '1234199985739010259';
