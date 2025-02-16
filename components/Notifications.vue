@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue';
-import { XMarkIcon } from '@heroicons/vue/20/solid';
 
 interface Props {
     icon: FunctionalComponent | null,
