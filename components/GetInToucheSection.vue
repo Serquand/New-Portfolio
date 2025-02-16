@@ -54,7 +54,7 @@ const socialProfiles = [
             end-title="In Touch"
         />
 
-        <div class="inset-0 flex gap-2 flex-grow p-6">
+        <div class="inset-0 flex gap-6 flex-grow p-6">
             <div class="flex flex-col gap-7 h-fit p-5 border border-gray-600 bg-[#111] w-92">
                 <div
                     v-for="contact in contacts"
@@ -90,6 +90,28 @@ const socialProfiles = [
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <div class="w-full">
+                <h4 class="uppercase text-2xl tracking-wide font-bold">
+                    Feel free to drop me a line
+                </h4>
+
+                <p class="text-lg mt-4 font-light leading-8">
+                    Not sure where to start with your web project? I provide expert advice and consultation. <br>
+                    I'll guide you through every steps of the process.
+                </p>
+
+                <div class="max-w-sm mx-auto p-4">
+    <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    />
+</div>
             </div>
         </div>
     </div>
