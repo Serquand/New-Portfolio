@@ -4,12 +4,12 @@ import type Notifications from './Notifications.vue';
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, CheckCircleIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, CheckCircleIcon, XMarkIcon, ChatBubbleBottomCenterIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
-    emailTo: 'esteban.vinc',
-    messageContent: 'Mon contenu',
-    subject: 'Mon sujet',
+    emailTo: '',
+    messageContent: '',
+    subject: '',
 };
 const contactInformations = ref<InfoMail>({ ...basisContactInformations });
 
@@ -18,6 +18,7 @@ const notificationMessage = ref('');
 const notificationsRef = ref<typeof Notifications | null>(null);
 const notificationIcon = ref<FunctionalComponent | null>(null);
 const iconClass = ref<string>("");
+const refreshmentKey = ref<number>(0);
 
 function openNotifications() {
     if (notificationsRef.value) {
@@ -78,6 +79,7 @@ async function submitMail() {
         });
 
         contactInformations.value = { ...basisContactInformations };
+        refreshmentKey.value = refreshmentKey.value + 1;
 
         notificationTitle.value = "Message sent!";
         notificationMessage.value = 'Message sucessfully sent!';
@@ -151,7 +153,7 @@ async function submitMail() {
                 </p>
 
                 <form
-                    class="mt-8 flex flex-col gap-6"
+                    class="mt-8 flex flex-col gap-10"
                     @submit.prevent="submitMail"
                 >
                     <PortfolioInput
@@ -160,6 +162,8 @@ async function submitMail() {
                         :model-value="contactInformations.emailTo"
                         :icon="EnvelopeIcon"
                         @update:model-value="e => contactInformations.emailTo = e"
+                        type="email"
+                        :required="true"
                     />
 
                     <PortfolioInput
@@ -167,7 +171,19 @@ async function submitMail() {
                         label="Your subject"
                         :model-value="contactInformations.subject"
                         :icon="KeyIcon"
+                        type="text"
+                        :required="true"
                         @update:model-value="e => contactInformations.subject = e"
+                    />
+
+                    <TextAreaResizable
+                        id="message"
+                        label="Your message"
+                        :model-value="contactInformations.messageContent"
+                        :icon="ChatBubbleBottomCenterIcon"
+                        @update:model-value="e => contactInformations.messageContent = e"
+                        :key="refreshmentKey"
+                        :required="true"
                     />
 
                     <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">

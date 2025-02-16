@@ -6,19 +6,30 @@ interface Props {
     modelValue: string,
     icon: FunctionalComponent,
     id: string,
-    type: "email" | "text",
     required: boolean
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
     (e: 'update:modelValue', value: string): void,
 }>();
 
+const textAreaRef = ref<HTMLTextAreaElement | null>(null);
+
 function onInput(e: any) {
     emit('update:modelValue', e.target.value);
+    autoResize();
 }
+
+function autoResize() {
+    if (textAreaRef.value) {
+        textAreaRef.value.style.height = 'auto';
+        textAreaRef.value.style.height = `${textAreaRef.value.scrollHeight}px`;
+    }
+}
+
+watch(() => props.modelValue, () => autoResize, { deep: true });
 </script>
 
 <template>
@@ -38,16 +49,23 @@ function onInput(e: any) {
                 :class="[modelValue.length > 0 ? 'text-base -translate-y-9' : 'text-xl -translate-y-3']"
             >{{ label }}</label>
 
-            <input
+            <textarea
+                ref="textAreaRef"
                 :id="id"
-                class="border-none h-6 w-full outline-0 text-xl"
+                class="border-none w-full outline-0 text-xl resize-none transition-all min-h-6 max-h-[10rem] scrollbar-hide"
                 :value="modelValue"
                 :name="id"
+                :required="required"
                 autocomplete="off"
                 @input="onInput"
-                :type="type"
-                :required="required"
-            >
+                rows="1"
+            ></textarea>
         </div>
     </label>
 </template>
+
+<style>
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+</style>
