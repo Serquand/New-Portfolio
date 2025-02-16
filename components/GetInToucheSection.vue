@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/vue/24/outline';
+import { EnvelopeIcon, KeyIcon, MapPinIcon, PhoneIcon } from '@heroicons/vue/24/outline';
+
+const basisContactInformations: InfoMail = {
+    emailTo: '',
+    messageContent: '',
+    subject: '',
+};
+const contactInformations = ref<InfoMail>({ ...basisContactInformations });
 
 const contacts = [
     {
@@ -102,16 +110,23 @@ const socialProfiles = [
                     I'll guide you through every steps of the process.
                 </p>
 
-                <div class="max-w-sm mx-auto p-4">
-    <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
-    <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email"
-        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-    />
-</div>
+                <form class="mt-8 flex flex-col gap-6">
+                    <PortfolioInput
+                        id="email"
+                        label="Your email"
+                        :model-value="contactInformations.emailTo"
+                        :icon="EnvelopeIcon"
+                        @update:model-value="e => contactInformations.emailTo = e"
+                    />
+
+                    <PortfolioInput
+                        id="subject"
+                        label="Your subject"
+                        :model-value="contactInformations.subject"
+                        :icon="KeyIcon"
+                        @update:model-value="e => contactInformations.subject = e"
+                    />
+                </form>
             </div>
         </div>
     </div>
