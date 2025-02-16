@@ -8,4 +8,6 @@ import { IdentificationIcon } from '@heroicons/vue/24/outline';
         begin-title="About"
         end-title="Me"
     />
+
+    <PersonnalStatBar />
 </template>
