@@ -4,7 +4,7 @@ import type Notifications from './Notifications.vue';
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, CheckCircleIcon, XMarkIcon, ChatBubbleBottomCenterIcon } from '@heroicons/vue/24/outline';
+import { ChatBubbleBottomCenterIcon, CheckCircleIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
     emailTo: '',
@@ -17,7 +17,7 @@ const notificationTitle = ref('');
 const notificationMessage = ref('');
 const notificationsRef = ref<typeof Notifications | null>(null);
 const notificationIcon = ref<FunctionalComponent | null>(null);
-const iconClass = ref<string>("");
+const iconClass = ref<string>('');
 const refreshmentKey = ref<number>(0);
 
 function openNotifications() {
@@ -81,15 +81,15 @@ async function submitMail() {
         contactInformations.value = { ...basisContactInformations };
         refreshmentKey.value = refreshmentKey.value + 1;
 
-        notificationTitle.value = "Message sent!";
+        notificationTitle.value = 'Message sent!';
         notificationMessage.value = 'Message sucessfully sent!';
         notificationIcon.value = CheckCircleIcon;
-        iconClass.value = "size-8 text-green-600";
+        iconClass.value = 'size-8 text-green-600';
     } catch {
-        notificationTitle.value = "Error";
+        notificationTitle.value = 'Error';
         notificationMessage.value = 'Something bad happened';
         notificationIcon.value = XMarkIcon;
-        iconClass.value = "size-8 text-red-600";
+        iconClass.value = 'size-8 text-red-600';
     } finally {
         openNotifications();
     }
@@ -161,9 +161,9 @@ async function submitMail() {
                         label="Your email"
                         :model-value="contactInformations.emailTo"
                         :icon="EnvelopeIcon"
-                        @update:model-value="e => contactInformations.emailTo = e"
                         type="email"
                         :required="true"
+                        @update:model-value="e => contactInformations.emailTo = e"
                     />
 
                     <PortfolioInput
@@ -178,12 +178,12 @@ async function submitMail() {
 
                     <TextAreaResizable
                         id="message"
+                        :key="refreshmentKey"
                         label="Your message"
                         :model-value="contactInformations.messageContent"
                         :icon="ChatBubbleBottomCenterIcon"
-                        @update:model-value="e => contactInformations.messageContent = e"
-                        :key="refreshmentKey"
                         :required="true"
+                        @update:model-value="e => contactInformations.messageContent = e"
                     />
 
                     <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">

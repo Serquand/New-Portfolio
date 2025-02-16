@@ -1,33 +1,46 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue';
 import { AcademicCapIcon, IdentificationIcon, StarIcon, WalletIcon } from '@heroicons/vue/24/outline';
+import Education from './Education.vue';
+import Experiences from './Experiences.vue';
+import Skills from './Skills.vue';
 
 export interface ResumeCardInformation {
     title: string,
     isVisible: boolean,
     presentationIcon: FunctionalComponent,
+    component: any,
 }
 
-const currentDisplayedCard = ref<string>('Skills');
-
-const resumeCardsInformation: Array<ResumeCardInformation> = [
+const resumeCardsInformation = ref<Array<ResumeCardInformation>>([
     {
-        isVisible: false,
+        isVisible: true,
         title: 'Skills',
         presentationIcon: StarIcon,
+        component: Skills,
     },
     {
         isVisible: false,
         title: 'Education',
         presentationIcon: AcademicCapIcon,
+        component: Education,
 
     },
     {
         isVisible: false,
         title: 'Experiences',
         presentationIcon: WalletIcon,
+        component: Experiences,
     },
-];
+]);
+
+function handleUpdateVisibleSection(sectionTitle: string) {
+    const oldVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.isVisible);
+    resumeCardsInformation.value[oldVisibleSectionIndex].isVisible = false;
+
+    const newVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.title === sectionTitle);
+    resumeCardsInformation.value[newVisibleSectionIndex].isVisible = true;
+}
 </script>
 
 <template>
@@ -38,14 +51,14 @@ const resumeCardsInformation: Array<ResumeCardInformation> = [
             end-title="Me"
         />
 
-        <div class="flex px-12">
-            <nav class="flex flex-col gap-5 text-[#777] transition-all">
+        <div class="flex px-12 gap-12">
+            <nav class="flex flex-col gap-5 text-[#777] transition-all justify-center">
                 <button
                     v-for="(information, index) in resumeCardsInformation"
                     :key="index"
-                    class="cursor-pointer w-60 py-3 font-bold uppercase text-lg tracking-wide hover:text-white flex items-center border justify-center gap-2"
-                    :class="[(currentDisplayedCard === information.title) ? 'bg-[#daa520] border-[#daa520] text-white' : 'border-[#777]  hover:border-white ']"
-                    @click="() => currentDisplayedCard = information.title"
+                    class="cursor-pointer w-60 py-3 transition-all font-bold uppercase text-lg tracking-wide hover:text-white flex items-center border justify-center gap-2"
+                    :class="[(information.isVisible) ? 'bg-[#daa520] border-[#daa520] text-white' : 'border-[#777]  hover:border-white ']"
+                    @click="() => handleUpdateVisibleSection(information.title)"
                 >
                     <component
                         :is="information.presentationIcon"
@@ -54,6 +67,21 @@ const resumeCardsInformation: Array<ResumeCardInformation> = [
                     {{ information.title }}
                 </button>
             </nav>
+
+            <div class="flex flex-col flex-grow relative">
+                <ResumeCard
+                    v-for="(information, index) in resumeCardsInformation"
+                    :key="index"
+                    :information="information"
+                    :index="index"
+                    :maximal-index="resumeCardsInformation.length"
+                    @update-visible-section="() => handleUpdateVisibleSection(information.title)"
+                >
+                    <component :is="information.component" />
+                </ResumeCard>
+
+                <div class="h-[2000px]" />
+            </div>
         </div>
 
         <hr class="text-[#777] w-9/10 mx-auto my-12">
@@ -61,13 +89,3 @@ const resumeCardsInformation: Array<ResumeCardInformation> = [
         <PersonnalStatBar />
     </div>
 </template>
-
-<!--
-<div class="flex flex-col flex-grow">
-    <ResumeCard
-        v-for="(information, index) in resumeCardsInformation"
-        :key="index"
-        :information="information"
-    />
-</div>
--->
