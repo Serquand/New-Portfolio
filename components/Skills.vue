@@ -5,8 +5,6 @@ import skills from '../skill.json';
 
 function getIconToDisplay(value: number, index: number) {
     const currentStarValue = index + 1;
-    // alert(`${currentStarValue}, ${value}`);
-
     if (currentStarValue <= value) {
         return fulfilledStarIcon;
     } else if (value > index) {
