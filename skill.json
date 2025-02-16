@@ -1,0 +1,122 @@
+[
+    {
+        "technologyLabel": "HTML",
+        "value": 5
+    },
+    {
+        "technologyLabel": "CSS",
+        "value": 4.5
+    },
+    {
+        "technologyLabel": "JavaScript",
+        "value": 5
+    },
+    {
+        "technologyLabel": "TypeScript",
+        "value": 5
+    },
+    {
+        "technologyLabel": "Python",
+        "value": 4
+    },
+    {
+        "technologyLabel": "C / C++",
+        "value": 3
+    },
+    {
+        "technologyLabel": "C#",
+        "value": 3
+    },
+    {
+        "technologyLabel": "Java",
+        "value": 4
+    },
+    {
+        "technologyLabel": "React",
+        "value": 4
+    },
+    {
+        "technologyLabel": "Next.js",
+        "value": 3
+    },
+    {
+        "technologyLabel": "Vue.js",
+        "value": 5
+    },
+    {
+        "technologyLabel": "Nuxt.js",
+        "value": 4
+    },
+    {
+        "technologyLabel": "TailwindCSS",
+        "value": 5
+    },
+    {
+        "technologyLabel": "Node.js",
+        "value": 4.5
+    },
+    {
+        "technologyLabel": "Express.js",
+        "value": 4.5
+    },
+    {
+        "technologyLabel": "NestJS",
+        "value": 4
+    },
+    {
+        "technologyLabel": "MySQL",
+        "value": 4
+    },
+    {
+        "technologyLabel": "PostgreSQL",
+        "value": 4
+    },
+    {
+        "technologyLabel": "MongoDB",
+        "value": 4
+    },
+    {
+        "technologyLabel": "ElasticSearch",
+        "value": 3
+    },
+    {
+        "technologyLabel": "Redis",
+        "value": 3.5
+    },
+    {
+        "technologyLabel": "Git",
+        "value": 5
+    },
+    {
+        "technologyLabel": "Docker",
+        "value": 4.5
+    },
+    {
+        "technologyLabel": "Docker Compose",
+        "value": 4.5
+    },
+    {
+        "technologyLabel": "Kubernetes",
+        "value": 3.5
+    },
+    {
+        "technologyLabel": "Terraform",
+        "value": 2.5
+    },
+    {
+        "technologyLabel": "Jenkins",
+        "value": 3
+    },
+    {
+        "technologyLabel": "Ansible",
+        "value": 3
+    },
+    {
+        "technologyLabel": "RabbitMQ",
+        "value": 3
+    },
+    {
+        "technologyLabel": "Kafka",
+        "value": 3
+    }
+]
