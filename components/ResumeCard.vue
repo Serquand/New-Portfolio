@@ -11,7 +11,7 @@ const props = defineProps<Props>();
 
 const emits = defineEmits<{ (e: 'update-visible-section'): void }>();
 
-const translateValue = (props.index - props.maximalIndex + 1) * 55;
+const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 55);
 </script>
 
 <template>
@@ -38,7 +38,10 @@ const translateValue = (props.index - props.maximalIndex + 1) * 55;
             {{ information.title }}
         </h4>
 
-        <div class="bg-[#222] p-6">
+        <div
+            class="bg-[#222] p-6"
+            v-if="information.isVisible"
+        >
             <slot />
         </div>
     </div>

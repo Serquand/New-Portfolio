@@ -12,6 +12,7 @@ export interface ResumeCardInformation {
     component: any,
 }
 
+const refreshmentKey = ref(0);
 const resumeCardsInformation = ref<Array<ResumeCardInformation>>([
     {
         isVisible: true,
@@ -23,16 +24,36 @@ const resumeCardsInformation = ref<Array<ResumeCardInformation>>([
         isVisible: false,
         title: 'Education',
         presentationIcon: AcademicCapIcon,
-        component: Education,
+        component: Skills,
 
     },
     {
         isVisible: false,
         title: 'Experiences',
         presentationIcon: WalletIcon,
-        component: Experiences,
+        component: Skills,
     },
 ]);
+
+const orderedIndex = computed<Record<string, number>>(() => {
+    const displayedIndex = resumeCardsInformation.value.findIndex(section => section.isVisible);
+    const localOrdered: Record<string, number> = { };
+    const numberOfElementsAfterVisible = resumeCardsInformation.value.length - displayedIndex - 1;
+
+    for (let i = 0; i < resumeCardsInformation.value.length; i++) {
+        const cardInformation = resumeCardsInformation.value[i];
+        if (cardInformation.isVisible) {
+            localOrdered[cardInformation.title] = 0;
+        } else {
+            const distance = Math.abs(i - displayedIndex);
+            const isAfter: boolean = i > displayedIndex;
+            const order = distance + (isAfter ? 0 : numberOfElementsAfterVisible);
+            localOrdered[cardInformation.title] = order;
+        }
+    }
+    refreshmentKey.value ++;
+    return localOrdered;
+});
 
 function handleUpdateVisibleSection(sectionTitle: string) {
     const oldVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.isVisible);
@@ -73,7 +94,7 @@ function handleUpdateVisibleSection(sectionTitle: string) {
                     v-for="(information, index) in resumeCardsInformation"
                     :key="index"
                     :information="information"
-                    :index="index"
+                    :index="orderedIndex[information.title]"
                     :maximal-index="resumeCardsInformation.length"
                     @update-visible-section="() => handleUpdateVisibleSection(information.title)"
                 >
