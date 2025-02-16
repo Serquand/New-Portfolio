@@ -87,7 +87,7 @@ function handleCloseProjectInformation() {
                     :key="section.id"
                     class="text-white absolute bg-[#222]"
                     :class="[
-                        section.position, selectedSection === section.id ? 'selected' : ''
+                        section.position, selectedSection === section.id ? 'selected' : '',
                     ]"
                 >
                     <SectionTitle
@@ -131,7 +131,6 @@ function handleCloseProjectInformation() {
 <style scoped lang="scss">
 .main-picture.men {
     background-image: url("/men.png");
-    background-color: #222;
     padding: 0;
     margin-top: 24px;
     margin-left: 24px;
