@@ -47,7 +47,7 @@ const socialProfiles = [
 </script>
 
 <template>
-    <div class="absolute top-0 px-12 size-full flex-col flex">
+    <div class="absolute top-0 px-2 size-full flex-col flex">
         <SectionSubtitle
             :separator-icon="EnvelopeIcon"
             begin-title="Get"
