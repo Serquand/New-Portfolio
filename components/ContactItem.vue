@@ -35,15 +35,15 @@ defineProps<Props>();
                 class="!size-6 text-gray-500"
             />
 
-            <p class="contact-item-value">
+            <p class="text-underline-appearence">
                 {{ value }}
             </p>
         </component>
     </div>
 </template>
 
-<style lang="scss" scoped>
-.contact-item-value {
+<style scoped lang="scss">
+.text-underline-appearence {
     position: relative;
 
     &::after {

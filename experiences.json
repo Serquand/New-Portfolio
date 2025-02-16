@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Le Parapheur",
+        "beginningDate": "11/2023",
+        "endDate": "03/2024",
+        "description": "Le Parapheur is a French startup that offers a digital solution for managing incoming mail and administrative documents. It provides collaborative tools for local governments to handle, organize, and respond to documents efficiently.",
+        "urls": [
+            {
+                "display": "le-parapheur.fr",
+                "to": "https://le-parapheur.fr/"
+            },
+            {
+                "display": "sallepublique.fr",
+                "to": "https://sallepublique.fr"
+            }
+        ]
+    },
+    {
+        "title": "Coupe des Régions",
+        "beginningDate": "11/2023",
+        "endDate": "Now",
+        "description": "La Coupe des Régions (COC) is a French community-driven event that highlights regional talents in the game Clash of Clans. It organizes competitive tournaments for players from different regions to showcase their skills and represent their territories.",
+        "urls": [
+            {
+                "display": "coupedesregions.com",
+                "to": "https://coupedesregions.com"
+            }
+        ]
+    }
+]

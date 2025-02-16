@@ -25,14 +25,14 @@ const resumeCardsInformation = ref<Array<ResumeCardInformation>>([
         isVisible: false,
         title: 'Education',
         presentationIcon: AcademicCapIcon,
-        component: Skills,
+        component: Education,
 
     },
     {
         isVisible: false,
         title: 'Experiences',
         presentationIcon: WalletIcon,
-        component: Skills,
+        component: Experiences,
     },
 ]);
 
@@ -56,8 +56,8 @@ const orderedIndex = computed<Record<string, number>>(() => {
 });
 
 function getCurrentSectionTitleVisible(): string | undefined {
-    for(const cardInformation of resumeCardsInformation.value) {
-        if(cardInformation.isVisible) {
+    for (const cardInformation of resumeCardsInformation.value) {
+        if (cardInformation.isVisible) {
             return cardInformation.title;
         }
     }
@@ -66,12 +66,12 @@ function getCurrentSectionTitleVisible(): string | undefined {
 
 function setHeightToSet(sectionTitle?: string | undefined) {
     const localSectionTitle = sectionTitle ?? getCurrentSectionTitleVisible();
-    if(!localSectionTitle) {
+    if (!localSectionTitle) {
         return;
     }
 
     const containerDisplayedComponent = document.getElementById(`resume-card-${localSectionTitle.toLowerCase()}`);
-    if(containerDisplayedComponent) {
+    if (containerDisplayedComponent) {
         heightToSet.value = containerDisplayedComponent?.clientHeight + 100; // 100 for the different transition etc...
     }
 }

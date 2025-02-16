@@ -16,24 +16,22 @@ function getIconToDisplay(value: number, index: number) {
 </script>
 
 <template>
-    <div
-        class="grid grid-cols-2 gap-y-6"
-    >
+    <div class="grid grid-cols-3 gap-y-4">
         <div
             v-for="(skill, index) in skills"
             :key="index"
-            class="flex justify-center flex-col gap-2 mx-auto"
+            class="flex justify-center items-center flex-col gap-0.5 mx-auto"
         >
-            <p class="uppercase text-center text-xl font-semibold">
+            <p class="uppercase text-lg font-semibold">
                 {{ skill.technologyLabel }}
             </p>
 
-            <div class="w-fit">
+            <div class="w-fit text-center">
                 <font-awesome
                     v-for="(_, starIndex) in new Array(5)"
                     :key="starIndex"
                     :icon="getIconToDisplay(skill.value, starIndex)"
-                    class="!size-7 text-[#daa520]"
+                    class="!size-4 text-[#daa520]"
                 />
             </div>
         </div>
