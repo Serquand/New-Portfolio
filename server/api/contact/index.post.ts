@@ -1,6 +1,6 @@
 import { handleNewMailRequest } from '~/server/utils/discord';
 import sendMail from '~/server/utils/email';
-import { getErrorsForEmail, getErrorsForSubject, triggerErrors } from '~/server/utils/tools';
+import { containsErrors, getErrorsForEmail, getErrorsForSubject } from '~/server/utils/tools';
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
@@ -17,7 +17,10 @@ export default defineEventHandler(async (event) => {
     errors.emailTo = getErrorsForEmail(emailTo);
     errors.subject = getErrorsForSubject(subject);
     errors.messageContent = getErrorsForSubject(messageContent);
-    triggerErrors(errors);
+    if (containsErrors(errors)) {
+        setResponseStatus(event, 400);
+        return { information: 'Something bad happened' };
+    }
 
     try {
         const response = await handleNewMailRequest(body);

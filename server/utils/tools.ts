@@ -29,14 +29,12 @@ export function getErrorsForMessageContent(messageContent: string) {
     }
 }
 
-export function triggerErrors(errors: Record<string, string>) {
+export function containsErrors(errors: Record<string, string>) {
     const allKeys = Object.keys(errors);
     for (const key of allKeys) {
         if (errors[key] !== '') {
-            throw createError({
-                statusCode: 400,
-                statusMessage: JSON.stringify(errors),
-            });
+            return true;
         }
     }
+    return false;
 }

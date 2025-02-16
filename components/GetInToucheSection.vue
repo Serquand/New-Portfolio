@@ -1,15 +1,29 @@
 <script setup lang="ts">
+import type { FunctionalComponent } from 'vue';
+import type Notifications from './Notifications.vue';
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { EnvelopeIcon, KeyIcon, MapPinIcon, PhoneIcon } from '@heroicons/vue/24/outline';
+import { EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, CheckCircleIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
-    emailTo: '',
-    messageContent: '',
-    subject: '',
+    emailTo: 'esteban.vinc',
+    messageContent: 'Mon contenu',
+    subject: 'Mon sujet',
 };
 const contactInformations = ref<InfoMail>({ ...basisContactInformations });
+
+const notificationTitle = ref('');
+const notificationMessage = ref('');
+const notificationsRef = ref<typeof Notifications | null>(null);
+const notificationIcon = ref<FunctionalComponent | null>(null);
+const iconClass = ref<string>("");
+
+function openNotifications() {
+    if (notificationsRef.value) {
+        notificationsRef.value.openNotifications();
+    }
+}
 
 const contacts = [
     {
@@ -52,6 +66,32 @@ const socialProfiles = [
         hoverColor: '#16A34A',
     },
 ];
+
+async function submitMail() {
+    try {
+        await $fetch('/api/contact', {
+            method: 'POST',
+            body: JSON.stringify(contactInformations.value),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        contactInformations.value = { ...basisContactInformations };
+
+        notificationTitle.value = "Message sent!";
+        notificationMessage.value = 'Message sucessfully sent!';
+        notificationIcon.value = CheckCircleIcon;
+        iconClass.value = "size-8 text-green-600";
+    } catch {
+        notificationTitle.value = "Error";
+        notificationMessage.value = 'Something bad happened';
+        notificationIcon.value = XMarkIcon;
+        iconClass.value = "size-8 text-red-600";
+    } finally {
+        openNotifications();
+    }
+}
 </script>
 
 <template>
@@ -110,7 +150,10 @@ const socialProfiles = [
                     I'll guide you through every steps of the process.
                 </p>
 
-                <form class="mt-8 flex flex-col gap-6">
+                <form
+                    class="mt-8 flex flex-col gap-6"
+                    @submit.prevent="submitMail"
+                >
                     <PortfolioInput
                         id="email"
                         label="Your email"
@@ -126,8 +169,21 @@ const socialProfiles = [
                         :icon="KeyIcon"
                         @update:model-value="e => contactInformations.subject = e"
                     />
+
+                    <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">
+                        Send Email
+                        <PaperAirplaneIcon class="size-7 bg-tr" />
+                    </button>
                 </form>
             </div>
         </div>
     </div>
+
+    <Notifications
+        ref="notificationsRef"
+        :icon="notificationIcon"
+        :title="notificationTitle"
+        :information="notificationMessage"
+        :icon-class="iconClass"
+    />
 </template>
