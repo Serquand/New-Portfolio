@@ -73,7 +73,7 @@ function handleCloseProjectInformation() {
 
 <template>
     <main class="flex pr-6">
-        <div class="main-picture men hidden lg:block" />
+        <div class="main-picture men" />
 
         <div
             class="relative bl-main lg:w-2/3 w-full transition-all"
@@ -86,7 +86,9 @@ function handleCloseProjectInformation() {
                     v-for="section in sections"
                     :key="section.id"
                     class="text-white absolute bg-[#222]"
-                    :class="[section.position, selectedSection === section.id ? 'selected' : '']"
+                    :class="[
+                        section.position, selectedSection === section.id ? 'selected' : ''
+                    ]"
                 >
                     <SectionTitle
                         v-if="!selectedSection"
@@ -128,7 +130,8 @@ function handleCloseProjectInformation() {
 
 <style scoped lang="scss">
 .main-picture.men {
-    background-image: url("/bombe.avif");
+    background-image: url("/men.png");
+    background-color: #222;
     padding: 0;
     margin-top: 24px;
     margin-left: 24px;

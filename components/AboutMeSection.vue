@@ -12,7 +12,8 @@ export interface ResumeCardInformation {
     component: any,
 }
 
-const refreshmentKey = ref(0);
+const displayedComponent = ref(null);
+const heightToSet = ref<number>(0);
 const resumeCardsInformation = ref<Array<ResumeCardInformation>>([
     {
         isVisible: true,
@@ -51,9 +52,29 @@ const orderedIndex = computed<Record<string, number>>(() => {
             localOrdered[cardInformation.title] = order;
         }
     }
-    refreshmentKey.value ++;
     return localOrdered;
 });
+
+function getCurrentSectionTitleVisible(): string | undefined {
+    for(const cardInformation of resumeCardsInformation.value) {
+        if(cardInformation.isVisible) {
+            return cardInformation.title;
+        }
+    }
+    return undefined;
+}
+
+function setHeightToSet(sectionTitle?: string | undefined) {
+    const localSectionTitle = sectionTitle ?? getCurrentSectionTitleVisible();
+    if(!localSectionTitle) {
+        return;
+    }
+
+    const containerDisplayedComponent = document.getElementById(`resume-card-${localSectionTitle.toLowerCase()}`);
+    if(containerDisplayedComponent) {
+        heightToSet.value = containerDisplayedComponent?.clientHeight + 100; // 100 for the different transition etc...
+    }
+}
 
 function handleUpdateVisibleSection(sectionTitle: string) {
     const oldVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.isVisible);
@@ -62,10 +83,14 @@ function handleUpdateVisibleSection(sectionTitle: string) {
     const newVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.title === sectionTitle);
     resumeCardsInformation.value[newVisibleSectionIndex].isVisible = true;
 }
+
+onMounted(() => {
+    setTimeout(() => setHeightToSet(), 50);
+});
 </script>
 
 <template>
-    <div class="container">
+    <div class="container bg-[#222] pb-8">
         <SectionSubtitle
             :separator-icon="IdentificationIcon"
             begin-title="About"
@@ -98,10 +123,16 @@ function handleUpdateVisibleSection(sectionTitle: string) {
                     :maximal-index="resumeCardsInformation.length"
                     @update-visible-section="() => handleUpdateVisibleSection(information.title)"
                 >
-                    <component :is="information.component" />
+                    <component
+                        :is="information.component"
+                        ref="displayedComponent"
+                    />
                 </ResumeCard>
 
-                <div class="h-[2000px]" />
+                <div
+                    class="h-[var(--height-to-set)]"
+                    :style="{ '--height-to-set': `${heightToSet}px` }"
+                />
             </div>
         </div>
 

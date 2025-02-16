@@ -16,6 +16,7 @@ const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 5
 
 <template>
     <div
+        :id="`resume-card-${information.title.toLowerCase()}`"
         class=" absolute top-0 w-full transition-all border border-gray-500 cursor-pointer
                 -translate-y-[var(--translate-y-value)] scale-[var(--scale-value)] z-[var(--z-index-value)]
         "
