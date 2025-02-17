@@ -41,3 +41,9 @@ defineProps<Props>();
         </component>
     </div>
 </template>
+
+<style lang="css" scoped>
+.text-underline-appearence::after {
+    background: #ffffff;
+}
+</style>
