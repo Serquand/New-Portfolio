@@ -57,19 +57,19 @@ onMounted(() => {
 
 <template>
     <section class="text-white flex flex-col absolute items-center justify-center uppercase">
-        <p class="text-3xl font-light">
+        <p class="text-xl md:text-3xl font-light">
             Hello, World ! I'm
         </p>
 
-        <h2 class="text-7xl text-[#daa520] text-center font-bold m-7 leading-14">
-            Esteban<br>VINCENT
+        <h2 class="text-5xl md:text-7xl text-[#daa520] text-center font-bold md:my-7 leading-14">
+            Esteban VINCENT
         </h2>
 
         <h1 class="sr-only">
             {{ descriptiveArray.join(" - ") }}
         </h1>
 
-        <p class="text-3xl font-bold text-white min-h-10">
+        <p class="text-xl md:text-3xl font-bold text-white min-h-10">
             {{ displayedWord }}
         </p>
     </section>

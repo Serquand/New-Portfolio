@@ -16,9 +16,9 @@ useSeoMeta({
 </script>
 
 <template>
-    <NuxtLayout>
+    <div class="p-6">
         <NuxtPage />
-    </NuxtLayout>
+    </div>
 </template>
 
 <style lang="scss">
@@ -52,12 +52,12 @@ useSeoMeta({
     }
 }
 
-.main-picture.men {
-    background-image: url("/men.png");
-    padding: 0;
-    margin-top: 24px;
-    margin-left: 24px;
+.main-container {
     height: calc(100vh - 48px);
+}
+
+.main-picture {
+    background-image: url("/bombe.avif");
     background-size: cover;
     background-position: center center;
     width: 40%;
@@ -66,10 +66,7 @@ useSeoMeta({
 .bl-main {
     position: relative;
     width: 100%;
-    margin-top: 24px;
     scrollbar-width: none;
-    margin-left: 24px;
-    gap: 20px;
 
     section {
         transition-property: all;
@@ -84,8 +81,13 @@ useSeoMeta({
 
         &:not(.project-display) {
             &:not(.selected) {
-                height: calc(50% - 10px);
-                width: calc(50% - 10px);
+                height: calc(50% - 12px);
+                width: calc(50% - 12px);
+
+                @media (max-width: 768px) {
+                    height: calc(25% - 12px);
+                    width: calc(100%);
+                }
             }
 
             &.selected {

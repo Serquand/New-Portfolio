@@ -17,21 +17,21 @@ const sections = [
         id: 'about-me',
         beginTitle: 'About',
         endTitle: 'Me',
-        position: 'top-0 right-0',
+        position: 'md:top-0 md:right-0 top-[25%]',
         component: AboutMeSection,
     },
     {
         id: 'projects',
         beginTitle: 'My',
         endTitle: 'Projects',
-        position: 'bottom-0 left-0',
+        position: 'md:bottom-0 md:left-0 md:top-auto top-[50%]',
         component: MyProjectsSection,
     },
     {
         id: 'get-in-touch',
         beginTitle: 'Get',
         endTitle: 'In Touch',
-        position: 'bottom-0 right-0',
+        position: 'bottom-0 md:right-0',
         component: GetInToucheSection,
     },
 ] as const;
@@ -72,8 +72,8 @@ function handleCloseProjectInformation() {
 </script>
 
 <template>
-    <main class="flex pr-6">
-        <div class="main-picture men" />
+    <main class="flex gap-6 main-container">
+        <div class="main-picture hidden lg:block" />
 
         <div
             class="relative bl-main lg:w-2/3 w-full transition-all"
