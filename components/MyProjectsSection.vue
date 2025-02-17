@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { WalletIcon } from '@heroicons/vue/24/outline';
-import projects from '../projects.json';
+import projects from '../data/projects.json';
 
 const emits = defineEmits<{ (e: 'see-project-information', projectToSeeId: string): void }>();
 </script>

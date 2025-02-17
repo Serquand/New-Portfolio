@@ -41,31 +41,3 @@ defineProps<Props>();
         </component>
     </div>
 </template>
-
-<style scoped lang="scss">
-.text-underline-appearence {
-    position: relative;
-
-    &::after {
-        display: block;
-        position: absolute;
-        height: 1px;
-        background: white;
-        content: "";
-    }
-
-    &:hover::after {
-        animation: appear-width 300ms ease-out forwards;
-    }
-}
-
-@keyframes appear-width {
-    from {
-        width: 0px;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-</style>

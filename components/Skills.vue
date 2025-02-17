@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { faStar as emptyStarIcon, faStarHalfAlt as halfFilledStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fulfilledStarIcon } from '@fortawesome/free-solid-svg-icons';
-import skills from '../skill.json';
+import skills from '../data/skill.json';
 
 function getIconToDisplay(value: number, index: number) {
     const currentStarValue = index + 1;

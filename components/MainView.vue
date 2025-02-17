@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Project } from '~/tools/types';
 import { XCircleIcon } from '@heroicons/vue/24/outline';
-import projects from '../projects.json';
+import projects from '../data/projects.json';
 import AboutMeSection from './AboutMeSection.vue';
 import GetInToucheSection from './GetInToucheSection.vue';
 import MainPresentationSection from './MainPresentationSection.vue';
@@ -127,59 +127,3 @@ function handleCloseProjectInformation() {
         </div>
     </main>
 </template>
-
-<style scoped lang="scss">
-.main-picture.men {
-    background-image: url("/men.png");
-    padding: 0;
-    margin-top: 24px;
-    margin-left: 24px;
-    height: calc(100vh - 48px);
-    background-size: cover;
-    background-position: center center;
-    width: 40%;
-}
-
-.bl-main {
-    position: relative;
-    width: 100%;
-    margin-top: 24px;
-    scrollbar-width: none;
-    margin-left: 24px;
-    gap: 20px;
-
-    section {
-        transition-property: all;
-        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-        transition-duration: var(--tw-duration, var(--default-transition-duration));
-
-        &.project-display {
-            height: 100%;
-            width: 100%;
-            z-index: 30;
-        }
-
-        &:not(.project-display) {
-            &:not(.selected) {
-                height: calc(50% - 10px);
-                width: calc(50% - 10px);
-            }
-
-            &.selected {
-                z-index: 20;
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
-}
-
-@keyframes go-up {
-    from {
-        top: 100%;
-    }
-    to {
-        top: 0;
-    }
-}
-</style>

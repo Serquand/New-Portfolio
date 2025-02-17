@@ -6,7 +6,7 @@ interface Props {
     modelValue: string,
     icon: FunctionalComponent,
     id: string,
-    required: boolean
+    required: boolean,
 }
 
 const props = defineProps<Props>();
@@ -50,22 +50,16 @@ watch(() => props.modelValue, () => autoResize, { deep: true });
             >{{ label }}</label>
 
             <textarea
-                ref="textAreaRef"
                 :id="id"
+                ref="textAreaRef"
                 class="border-none w-full outline-0 text-xl resize-none transition-all min-h-6 max-h-[10rem] scrollbar-hide"
                 :value="modelValue"
                 :name="id"
                 :required="required"
                 autocomplete="off"
-                @input="onInput"
                 rows="1"
-            ></textarea>
+                @input="onInput"
+            />
         </div>
     </label>
 </template>
-
-<style>
-.scrollbar-hide {
-    scrollbar-width: none;
-}
-</style>
