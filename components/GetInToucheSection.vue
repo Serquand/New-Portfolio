@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { FunctionalComponent } from 'vue';
-import type Notifications from './Notifications.vue';
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { ChatBubbleBottomCenterIcon, CheckCircleIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { ChatBubbleBottomCenterIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
     emailTo: '',
@@ -12,19 +10,10 @@ const basisContactInformations: InfoMail = {
     subject: '',
 };
 const contactInformations = ref<InfoMail>({ ...basisContactInformations });
-
-const notificationTitle = ref('');
-const notificationMessage = ref('');
-const notificationsRef = ref<typeof Notifications | null>(null);
-const notificationIcon = ref<FunctionalComponent | null>(null);
-const iconClass = ref<string>('');
+const isLoading = ref<boolean>(false);
+const isLoadingValid = ref<boolean>(false);
 const refreshmentKey = ref<number>(0);
-
-function openNotifications() {
-    if (notificationsRef.value) {
-        notificationsRef.value.openNotifications();
-    }
-}
+const errorMessage = ref<string>('');
 
 const contacts = [
     {
@@ -70,6 +59,7 @@ const socialProfiles = [
 
 async function submitMail() {
     try {
+        isLoading.value = true;
         await $fetch('/api/contact', {
             method: 'POST',
             body: JSON.stringify(contactInformations.value),
@@ -77,27 +67,34 @@ async function submitMail() {
                 'Content-Type': 'application/json',
             },
         });
+        isLoading.value = false;
+        isLoadingValid.value = true;
+
+        setTimeout(() => isLoadingValid.value = false, 1_500);
 
         contactInformations.value = { ...basisContactInformations };
         refreshmentKey.value = refreshmentKey.value + 1;
+    } catch (err: any) {
+        isLoading.value = false;
 
-        notificationTitle.value = 'Message sent!';
-        notificationMessage.value = 'Message sucessfully sent!';
-        notificationIcon.value = CheckCircleIcon;
-        iconClass.value = 'size-8 text-green-600';
-    } catch {
-        notificationTitle.value = 'Error';
-        notificationMessage.value = 'Something bad happened';
-        notificationIcon.value = XMarkIcon;
-        iconClass.value = 'size-8 text-red-600';
-    } finally {
-        openNotifications();
+        if (err.response) {
+            try {
+                // const errorData = await err.response.json();
+                errorMessage.value = 'Something bad happened!';
+            } catch (jsonErr) {
+                console.error('Erreur de parsing JSON:', jsonErr);
+                errorMessage.value = 'Something bad happened!';
+            }
+        } else {
+            console.error('Erreur:', err);
+            errorMessage.value = 'Something bad happened!';
+        }
     }
 }
 </script>
 
 <template>
-    <div class="absolute top-0 px-2 size-full flex-col flex">
+    <div class="container bg-[#222]">
         <SectionSubtitle
             :separator-icon="EnvelopeIcon"
             begin-title="Get"
@@ -120,7 +117,7 @@ async function submitMail() {
                 </div>
 
                 <div class="flex flex-col gap-4">
-                    <h4 class="text-2xl text-[#daa520] font-bold uppercase">
+                    <h4 class="text-xl text-[#daa520] font-bold uppercase">
                         Social Profiles
                     </h4>
 
@@ -143,17 +140,17 @@ async function submitMail() {
             </div>
 
             <div class="w-full">
-                <h4 class="uppercase text-2xl tracking-wide font-bold">
+                <h4 class="uppercase text-xl tracking-wide font-bold">
                     Feel free to drop me a line
                 </h4>
 
-                <p class="text-lg mt-4 font-light leading-8">
-                    Not sure where to start with your web project? I provide expert advice and consultation. <br>
+                <p class="mt-4 font-light leading-6">
+                    Not sure where to start with your web project? I provide expert advice and consultation.<br>
                     I'll guide you through every steps of the process.
                 </p>
 
                 <form
-                    class="mt-8 flex flex-col gap-10"
+                    class="mt-8 flex flex-col gap-8"
                     @submit.prevent="submitMail"
                 >
                     <PortfolioInput
@@ -186,20 +183,24 @@ async function submitMail() {
                         @update:model-value="e => contactInformations.messageContent = e"
                     />
 
-                    <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">
-                        Send Email
-                        <PaperAirplaneIcon class="size-7 bg-tr" />
-                    </button>
+                    <div>
+                        <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">
+                            Send Email
+                            <PaperAirplaneIcon class="size-7 bg-tr" />
+                        </button>
+
+                        <p
+                            v-if="errorMessage"
+                            class="text-red-600 text-lg mt-4"
+                        >
+                            {{ errorMessage }}
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <Notifications
-        ref="notificationsRef"
-        :icon="notificationIcon"
-        :title="notificationTitle"
-        :information="notificationMessage"
-        :icon-class="iconClass"
-    />
+    <Loader v-if="isLoading" />
+    <LoaderValid v-if="isLoadingValid" />
 </template>

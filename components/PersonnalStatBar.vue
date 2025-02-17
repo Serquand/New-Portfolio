@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { HeartIcon, BriefcaseIcon, HandThumbUpIcon } from '@heroicons/vue/24/outline';
 import type { FunctionalComponent } from 'vue';
+import { BriefcaseIcon, HandThumbUpIcon, HeartIcon } from '@heroicons/vue/24/outline';
 
 interface Statistic {
     label: string,
     value: string,
-    icon: FunctionalComponent
+    icon: FunctionalComponent,
 }
 
 const stats: Statistic[] = [
     {
         icon: BriefcaseIcon,
-        label: "Years Experience",
-        value: "2+"
+        label: 'Years Experience',
+        value: '2+',
     },
     {
         icon: HandThumbUpIcon,
         label: 'Achieved Projects',
-        value: '10+'
+        value: '10+',
     },
     {
         icon: HeartIcon,
         label: 'Happy Clients',
-        value: '10+'
+        value: '10+',
     },
-]
+];
 </script>
 
 <template>
@@ -32,18 +32,18 @@ const stats: Statistic[] = [
         <div
             v-for="(stat, index) in stats"
             :key="index"
-            class="flex flex-col items-center gap-10"
+            class="flex flex-col items-center gap-6"
         >
             <component
                 :is="stat.icon"
-                class="size-20 text-white"
+                class="size-16 text-white"
             />
 
-            <p class="text-6xl text-[#daa520] font-bold">
+            <p class="text-5xl text-[#daa520] font-bold">
                 {{ stat.value }}
             </p>
 
-            <h4 class="text-2xl text-white font-black uppercase tracking-wider">
+            <h4 class="text-xl text-white font-black uppercase tracking-wider">
                 {{ stat.label }}
             </h4>
         </div>

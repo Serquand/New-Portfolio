@@ -46,13 +46,13 @@ watch(() => props.modelValue, () => autoResize, { deep: true });
             <label
                 :for="id"
                 class="absolute group-focus-within:text-base group-focus-within:-translate-y-9 transition-all duration-300 mb-px block"
-                :class="[modelValue.length > 0 ? 'text-base -translate-y-9' : 'text-xl -translate-y-3']"
+                :class="[modelValue.length > 0 ? 'text-base -translate-y-9' : 'text-lg -translate-y-0']"
             >{{ label }}</label>
 
             <textarea
                 :id="id"
                 ref="textAreaRef"
-                class="border-none w-full outline-0 text-xl resize-none transition-all min-h-6 max-h-[10rem] scrollbar-hide"
+                class="border-none w-full outline-0 text-lg resize-none transition-all min-h-6 max-h-[10rem] scrollbar-hide"
                 :value="modelValue"
                 :name="id"
                 :required="required"

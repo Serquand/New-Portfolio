@@ -56,12 +56,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="text-white flex flex-col absolute items-center justify-center gap-6 uppercase">
+    <section class="text-white flex flex-col absolute items-center justify-center uppercase">
         <p class="text-3xl font-light">
-            Hi there ! I'm
+            Hello, World ! I'm
         </p>
 
-        <h2 class="text-8xl text-[#daa520] text-center font-bold m-7 leading-14">
+        <h2 class="text-7xl text-[#daa520] text-center font-bold m-7 leading-14">
             Esteban<br>VINCENT
         </h2>
 

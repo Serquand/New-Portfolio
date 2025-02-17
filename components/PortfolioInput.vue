@@ -6,8 +6,8 @@ interface Props {
     modelValue: string,
     icon: FunctionalComponent,
     id: string,
-    type: "email" | "text",
-    required: boolean
+    type: 'email' | 'text',
+    required: boolean,
 }
 
 defineProps<Props>();
@@ -35,18 +35,18 @@ function onInput(e: any) {
             <label
                 :for="id"
                 class="absolute group-focus-within:text-base group-focus-within:-translate-y-9 transition-all duration-300 mb-px block"
-                :class="[modelValue.length > 0 ? 'text-base -translate-y-9' : 'text-xl -translate-y-3']"
+                :class="[modelValue.length > 0 ? 'text-base -translate-y-9' : 'text-lg -translate-y-1']"
             >{{ label }}</label>
 
             <input
                 :id="id"
-                class="border-none h-6 w-full outline-0 text-xl"
+                class="border-none h-6 w-full outline-0 text-lg"
                 :value="modelValue"
                 :name="id"
                 autocomplete="off"
-                @input="onInput"
                 :type="type"
                 :required="required"
+                @input="onInput"
             >
         </div>
     </label>

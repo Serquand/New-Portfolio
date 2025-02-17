@@ -13,7 +13,7 @@ defineProps<Props>();
 
 <template>
     <div class="flex flex-col gap-4">
-        <h4 class="text-2xl text-[#daa520] font-bold uppercase">
+        <h4 class="text-xl text-[#daa520] font-bold uppercase">
             {{ label }}
         </h4>
 
@@ -21,7 +21,7 @@ defineProps<Props>();
             :is="link ? 'a' : 'div'"
             :href="link"
             target="_blank"
-            class="flex gap-4 text-gray-100 text-lg items-center"
+            class="flex gap-4 text-gray-100 items-center"
         >
             <component
                 :is="icon"
