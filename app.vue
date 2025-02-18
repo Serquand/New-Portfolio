@@ -22,10 +22,6 @@ useSeoMeta({
 </template>
 
 <style lang="scss">
-$DURATION_FOR_OPEN_SELECTED_SECTION: 650ms;
-$DURATION_OPACITY_SECTION_APPEARED_ANIMATION: 100ms;
-$DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SECTION_APPEARED_ANIMATION;
-
 .scrollbar-hide {
     scrollbar-width: none;
 }
@@ -53,58 +49,6 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 
     to {
         width: 100%;
-    }
-}
-
-.main-container {
-    height: calc(100vh - 48px);
-}
-
-.main-picture {
-    background-image: url("/bombe.avif");
-    background-size: cover;
-    background-position: center center;
-    width: 40%;
-}
-
-.bl-main {
-    position: relative;
-    width: 100%;
-    scrollbar-width: none;
-
-    section {
-        transition-property: all;
-        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-        transition-duration: $DURATION_FOR_OPEN_SELECTED_SECTION;
-
-        &.project-display {
-            height: 100%;
-            width: 100%;
-            z-index: 30;
-        }
-
-        &:not(.project-display) {
-            &:not(.selected) {
-                height: calc(50% - 12px);
-                width: calc(50% - 12px);
-
-                @media (max-width: 768px) {
-                    height: calc(25% - 12px);
-                    width: calc(100%);
-                }
-            }
-
-            &.selected {
-                z-index: 20;
-                height: 100%;
-                width: 100%;
-
-                .section-content, .close-selected-section {
-                    opacity: 0;
-                    animation: appear-directly $DURATION_OPACITY_SECTION_APPEARED_ANIMATION linear $DURATION_FOR_APPEAR forwards;
-                }
-            }
-        }
     }
 }
 

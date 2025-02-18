@@ -56,7 +56,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <section class="text-white flex flex-col absolute items-center justify-center uppercase">
+    <section
+        id="main-presentation"
+        class="text-white flex flex-col absolute items-center justify-center uppercase"
+    >
         <p class="text-xl md:text-3xl font-light">
             Hello, World ! I'm
         </p>

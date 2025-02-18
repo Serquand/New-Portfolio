@@ -17,14 +17,14 @@ const sections = [
         id: 'about-me',
         beginTitle: 'About',
         endTitle: 'Me',
-        position: 'md:top-0 md:right-0 top-[25%]',
+        position: 'md:top-0 md:right-0',
         component: AboutMeSection,
     },
     {
         id: 'projects',
         beginTitle: 'My',
         endTitle: 'Projects',
-        position: 'md:bottom-0 md:left-0 md:top-auto top-[50%]',
+        position: 'md:bottom-0 md:left-0 md:top-auto',
         component: MyProjectsSection,
     },
     {
@@ -85,6 +85,7 @@ function handleCloseProjectInformation() {
                 <section
                     v-for="section in sections"
                     :key="section.id"
+                    :id="section.id"
                     class="text-white absolute bg-[#222]"
                     :class="[
                         section.position, selectedSection === section.id ? 'selected' : '',
@@ -129,3 +130,92 @@ function handleCloseProjectInformation() {
         </div>
     </main>
 </template>
+
+
+<style lang="scss">
+$DURATION_FOR_OPEN_SELECTED_SECTION: 650ms;
+$DURATION_OPACITY_SECTION_APPEARED_ANIMATION: 100ms;
+$DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SECTION_APPEARED_ANIMATION;
+
+.main-container {
+    height: calc(100vh - 48px);
+}
+
+.main-picture {
+    background-image: url("/bombe.avif");
+    background-size: cover;
+    background-position: center center;
+    width: 40%;
+}
+
+.bl-main {
+    position: relative;
+    width: 100%;
+    scrollbar-width: none;
+
+    section {
+        transition-property: all;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+        transition-duration: $DURATION_FOR_OPEN_SELECTED_SECTION;
+
+        &.project-display {
+            height: 100%;
+            width: 100%;
+            z-index: 30;
+        }
+
+        &:not(.project-display) {
+            &:not(.selected) {
+                @media (min-width: 767px) {
+                    height: calc(50% - 12px);
+                    width: calc(50% - 12px);
+                }
+
+                @media (max-width: 767px) {
+                    height: calc(20% - 6px);
+                    width: calc(100%);
+                }
+            }
+
+            &.selected {
+                z-index: 20;
+                width: 100%;
+
+                @media (min-width: 767px) {
+                    top: 0 !important;
+                    bottom: 0 !important;
+                }
+
+                @media (max-width: 767px) {
+                    top: 0 !important;
+                    bottom: 0 !important;
+                    height: auto;
+                }
+
+                .section-content, .close-selected-section {
+                    opacity: 0;
+                    animation: appear-directly $DURATION_OPACITY_SECTION_APPEARED_ANIMATION linear $DURATION_FOR_APPEAR forwards;
+                }
+            }
+        }
+    }
+}
+
+#main-presentation {
+    @media (max-width: 767px) {
+        height: calc(40% - 18px);
+    }
+}
+
+#about-me {
+    @media (max-width: 767px) {
+        top: calc(40% - 6px);
+    }
+}
+
+#projects {
+    @media (max-width: 767px) {
+        top: 60%;
+    }
+}
+</style>
