@@ -138,7 +138,6 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 
 .main-container {
     height: calc(100vh - 48px);
-    background-color: #111;
 }
 
 .main-picture {
@@ -159,7 +158,7 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
         transition-duration: $DURATION_FOR_OPEN_SELECTED_SECTION;
 
         &.project-display {
-            height: 100%;
+            height: 100vh;
             width: 100%;
             z-index: 30;
         }
