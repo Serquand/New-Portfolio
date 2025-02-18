@@ -84,8 +84,8 @@ function handleCloseProjectInformation() {
 
                 <section
                     v-for="section in sections"
-                    :key="section.id"
                     :id="section.id"
+                    :key="section.id"
                     class="text-white absolute bg-[#222]"
                     :class="[
                         section.position, selectedSection === section.id ? 'selected' : '',
@@ -131,7 +131,6 @@ function handleCloseProjectInformation() {
     </main>
 </template>
 
-
 <style lang="scss">
 $DURATION_FOR_OPEN_SELECTED_SECTION: 650ms;
 $DURATION_OPACITY_SECTION_APPEARED_ANIMATION: 100ms;
@@ -139,6 +138,7 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 
 .main-container {
     height: calc(100vh - 48px);
+    background-color: #111;
 }
 
 .main-picture {
