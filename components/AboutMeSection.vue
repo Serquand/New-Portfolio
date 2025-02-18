@@ -100,7 +100,7 @@ onMounted(() => {
         />
 
         <div class="flex px-12 gap-12">
-            <nav class="flex flex-col gap-5 text-[#777] transition-all justify-center">
+            <nav class="hidden md:flex flex-col gap-5 text-[#777] transition-all justify-center">
                 <button
                     v-for="(information, index) in resumeCardsInformation"
                     :key="index"

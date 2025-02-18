@@ -40,8 +40,8 @@ const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 5
         </h4>
 
         <div
-            class="bg-[#222] p-6"
             v-if="information.isVisible"
+            class="bg-[#222] p-6"
         >
             <slot />
         </div>
