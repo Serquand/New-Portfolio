@@ -12,7 +12,7 @@ defineProps<Props>();
 
 <template>
     <div>
-        <div class="flex justify-center font-bold text-6xl my-12 relative uppercase">
+        <div class="flex justify-center font-bold text-3xl sm:text-5xl md:text-6xl my-12 relative uppercase">
             <div class="size-fit relative overflow-hidden">
                 <h3 class="opacity-0">
                     {{ beginTitle }} {{ endTitle }}

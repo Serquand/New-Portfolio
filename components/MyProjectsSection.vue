@@ -12,7 +12,7 @@ const emits = defineEmits<{ (e: 'see-project-information', projectToSeeId: strin
         end-title="Projects"
     />
 
-    <div class="grid grid-cols-3 gap-4 px-6 mx-auto bg-[#222] pb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-12 sm:px-6 mx-auto bg-[#222] pb-6">
         <Project
             v-for="project in projects"
             :key="project.id"

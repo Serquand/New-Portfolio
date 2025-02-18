@@ -101,8 +101,8 @@ async function submitMail() {
             end-title="In Touch"
         />
 
-        <div class="inset-0 flex gap-6 flex-grow p-6">
-            <div class="flex flex-col gap-7 h-fit p-5 border border-gray-600 bg-[#111] w-92">
+        <div class="inset-0 flex flex-col md:items-start items-center md:flex-row gap-6 p-6">
+            <div class="flex flex-col gap-7 h-fit p-5 border border-gray-600 bg-[#111] w-92 max-w-[100%]">
                 <div
                     v-for="contact in contacts"
                     :key="contact.label"
@@ -139,23 +139,30 @@ async function submitMail() {
                 </div>
             </div>
 
-            <div class="w-full">
-                <h4 class="uppercase text-xl tracking-wide font-bold">
+            <SeparatorTitleContent
+                :separator-icon="EnvelopeIcon"
+                class="block md:hidden my-12"
+            />
+
+            <div class="w-full flex flex-col md:items-start items-center">
+                <h4 class="uppercase md:text-xl sm:text-lg text-base tracking-wide font-bold">
                     Feel free to drop me a line
                 </h4>
 
-                <p class="mt-4 font-light leading-6">
-                    Not sure where to start with your web project? I provide expert advice and consultation.<br>
+                <p class="mt-4 font-light leading-6 text-center md:text-base text-sm md:text-start">
+                    Not sure where to start with your web project?
+                    I provide expert advice and consultation.<br>
                     I'll guide you through every steps of the process.
                 </p>
 
                 <form
-                    class="mt-8 flex flex-col gap-8"
+                    class="mt-8 flex flex-col md:items-start items-center w-full gap-8"
                     @submit.prevent="submitMail"
                 >
                     <PortfolioInput
                         id="email"
                         label="Your email"
+                        class="cursor-pointer"
                         :model-value="contactInformations.emailTo"
                         :icon="EnvelopeIcon"
                         type="email"
@@ -166,6 +173,7 @@ async function submitMail() {
                     <PortfolioInput
                         id="subject"
                         label="Your subject"
+                        class="cursor-pointer"
                         :model-value="contactInformations.subject"
                         :icon="KeyIcon"
                         type="text"
