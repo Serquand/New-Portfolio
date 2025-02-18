@@ -18,8 +18,8 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            htmlAttrs: { class: 'h-full bg-white' },
-            bodyAttrs: { class: 'h-full bg-[#111]' },
+            htmlAttrs: { class: 'h-scren' },
+            bodyAttrs: { class: 'h-scren bg-[#111]' },
             title: 'Esteban VINCENT - Portfolio',
             link: [
                 {
@@ -27,6 +27,6 @@ export default defineNuxtConfig({
                     href: 'https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/font/octicons.min.css', // GitHub Octicons CDN
                 },
             ],
-        }
+        },
     },
 });
