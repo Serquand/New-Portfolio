@@ -8,7 +8,7 @@ defineProps<Props>();
 </script>
 
 <template>
-    <div class="flex justify-center cursor-pointer items-center group font-black text-5xl absolute inset-0 uppercase">
+    <div class="flex justify-center cursor-pointer items-center group font-black text-3xl md:text-4xl absolute inset-0 uppercase">
         <div class="size-fit relative overflow-hidden">
             <h3 class="opacity-0">
                 {{ beginTitle }} {{ endTitle }}

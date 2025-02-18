@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         head: {
             charset: 'utf-8',
             viewport: 'width=device-width, initial-scale=1',
-            htmlAttrs: { class: 'h-scren' },
+            htmlAttrs: { class: 'h-screen' },
             bodyAttrs: { class: 'h-scren bg-[#111]' },
             title: 'Esteban VINCENT - Portfolio',
             link: [
