@@ -83,11 +83,11 @@ function handleUpdateVisibleSection(sectionTitle: string) {
     const newVisibleSectionIndex = resumeCardsInformation.value.findIndex(_ => _.title === sectionTitle);
     resumeCardsInformation.value[newVisibleSectionIndex].isVisible = true;
 
-    setTimeout(() => setHeightToSet(), 50);
+    setTimeout(() => setHeightToSet(), 10);
 }
 
 onMounted(() => {
-    setTimeout(() => setHeightToSet(), 50);
+    setTimeout(() => setHeightToSet(), 550);
 });
 </script>
 

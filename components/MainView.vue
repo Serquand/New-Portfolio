@@ -97,15 +97,17 @@ function handleCloseProjectInformation() {
                         @click="() => selectedSection = section.id"
                     />
 
-                    <component
-                        :is="section.component"
-                        v-if="selectedSection === section.id"
-                        @see-project-information="handleDisplayProjectInformations"
-                    />
+                    <div class="section-content">
+                        <component
+                            :is="section.component"
+                            v-if="selectedSection === section.id"
+                            @see-project-information="handleDisplayProjectInformations"
+                        />
+                    </div>
 
                     <XCircleIcon
                         v-if="selectedSection === section.id"
-                        class="size-12 absolute top-8 right-12 cursor-pointer"
+                        class="size-12 absolute top-8 right-12 cursor-pointer close-selected-section"
                         @click="selectedSection = null"
                     />
                 </section>

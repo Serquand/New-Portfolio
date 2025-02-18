@@ -22,6 +22,10 @@ useSeoMeta({
 </template>
 
 <style lang="scss">
+$DURATION_FOR_OPEN_SELECTED_SECTION: 650ms;
+$DURATION_OPACITY_SECTION_APPEARED_ANIMATION: 100ms;
+$DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SECTION_APPEARED_ANIMATION;
+
 .scrollbar-hide {
     scrollbar-width: none;
 }
@@ -71,7 +75,7 @@ useSeoMeta({
     section {
         transition-property: all;
         transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-        transition-duration: var(--tw-duration, var(--default-transition-duration));
+        transition-duration: $DURATION_FOR_OPEN_SELECTED_SECTION;
 
         &.project-display {
             height: 100%;
@@ -94,6 +98,11 @@ useSeoMeta({
                 z-index: 20;
                 height: 100%;
                 width: 100%;
+
+                .section-content, .close-selected-section {
+                    opacity: 0;
+                    animation: appear-directly $DURATION_OPACITY_SECTION_APPEARED_ANIMATION linear $DURATION_FOR_APPEAR forwards;
+                }
             }
         }
     }
@@ -105,6 +114,16 @@ useSeoMeta({
     }
     to {
         top: 0;
+    }
+}
+
+@keyframes appear-directly {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 </style>
