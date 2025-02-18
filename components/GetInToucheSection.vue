@@ -94,7 +94,7 @@ async function submitMail() {
 </script>
 
 <template>
-    <div class="container bg-[#222]">
+    <div class="bg-[#222]">
         <SectionSubtitle
             :separator-icon="EnvelopeIcon"
             begin-title="Get"

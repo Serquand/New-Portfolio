@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="container bg-[#222] pb-8">
+    <div class="bg-[#222] pb-8">
         <SectionSubtitle
             :separator-icon="IdentificationIcon"
             begin-title="About"

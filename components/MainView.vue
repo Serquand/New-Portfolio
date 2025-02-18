@@ -92,7 +92,7 @@ function handleCloseProjectInformation() {
                     ]"
                 >
                     <SectionTitle
-                        v-if="!selectedSection"
+                        v-if="selectedSection !== section.id"
                         :begin-title="section.beginTitle"
                         :end-title="section.endTitle"
                         @click="() => selectedSection = section.id"
@@ -108,7 +108,7 @@ function handleCloseProjectInformation() {
 
                     <XCircleIcon
                         v-if="selectedSection === section.id"
-                        class="size-12 absolute top-8 right-12 cursor-pointer close-selected-section"
+                        class="size-12 fixed top-14 right-18 cursor-pointer close-selected-section"
                         @click="selectedSection = null"
                     />
                 </section>
@@ -216,6 +216,12 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 #projects {
     @media (max-width: 767px) {
         top: 60%;
+    }
+}
+
+#get-in-touch {
+    @media (max-width: 767px) {
+        top: calc(80% + 6px);
     }
 }
 </style>
