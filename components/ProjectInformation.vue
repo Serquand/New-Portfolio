@@ -32,7 +32,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 </script>
 
 <template>
-    <div class="relative text-white size-full">
+    <div class="relative text-white flex items-center size-full">
         <XCircleIcon
             class="size-12 absolute top-8 right-12 cursor-pointer"
             @click="() => emits('close-project-information')"
@@ -40,7 +40,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 
         <div
             v-if="projectToDisplay"
-            class="absolute top-1/2 -translate-y-1/2 grid gap-8 grid-cols-2 w-full px-14"
+            class="grid gap-8 grid-cols-2 w-full px-14"
         >
             <div
                 class="aspect-square cursor-pointer bg-cover"

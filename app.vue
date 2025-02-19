@@ -16,9 +16,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <div class="p-6">
-        <NuxtPage />
-    </div>
+    <NuxtPage />
 </template>
 
 <style lang="scss">

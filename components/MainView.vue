@@ -72,11 +72,13 @@ function handleCloseProjectInformation() {
 </script>
 
 <template>
-    <main class="flex gap-6 main-container">
-        <div class="main-picture hidden lg:block" />
+    <main class="flex m-6 ml-0 main-container">
+        <div class="main-picture flex-shrink-0 hidden lg:block">
+            <div class="main-picture-image" />
+        </div>
 
         <div
-            class="relative bl-main w-full transition-all"
+            class="relative bl-main w-full transition-all h-full"
             :class="[isProjectInformationVisible ? 'overflow-hidden' : 'overflow-auto']"
         >
             <MainPresentationSection />
@@ -111,11 +113,16 @@ function handleCloseProjectInformation() {
                     @click="selectedSection = null"
                 />
             </section>
+        </div>
 
+        <div
+            class="project-information-container"
+            :class="[projectToDisplayInformation ? 'z-30' : '-z-10']"
+        >
             <section
                 v-if="projectToDisplayInformation"
-                class="absolute project-display transition-all duration-750 bg-[#222]"
-                :class="[isProjectInformationVisible ? 'top-0' : 'top-[100%]']"
+                class="absolute inset-x-0 transition-all duration-750 bg-[#222] h-full"
+                :class="[projectToDisplayInformation ? 'top-0' : 'top-[100%]']"
             >
                 <ProjectInformation
                     v-if="projectToDisplayInformation"
@@ -138,11 +145,26 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
     height: calc(100svh - 48px);
 }
 
+.project-information-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    bottom: 24px;
+    overflow: hidden;
+    left: calc(33% + 64px);
+}
+
 .main-picture {
-    background-image: url("/chill_guy.webp");
-    background-size: cover;
-    background-position: center center;
-    width: 40%;
+    width: calc(33% + 24px);
+    margin: 0 24px;
+
+    &-image {
+        height: 100%;
+        width: 100%;
+        background-image: url("/chill_guy.webp");
+        background-size: cover;
+        background-position: center center;
+    }
 }
 
 .bl-main {
