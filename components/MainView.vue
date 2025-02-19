@@ -7,9 +7,9 @@ import GetInToucheSection from './GetInToucheSection.vue';
 import MainPresentationSection from './MainPresentationSection.vue';
 import MyProjectsSection from './MyProjectsSection.vue';
 
-type SelectableSection = 'about-me' | 'projects' | 'get-in-touch' | null;
+type SelectableSection = 'about-me' | 'projects ' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
-const projectToDisplayInformation = ref<Project | null>(null);
+const projectToDisplayInformation = ref<Project | null>(projects[0]);
 const isProjectInformationVisible = ref(false);
 
 const sections = [
@@ -76,43 +76,41 @@ function handleCloseProjectInformation() {
         <div class="main-picture hidden lg:block" />
 
         <div
-            class="relative bl-main lg:w-2/3 w-full transition-all"
+            class="relative bl-main w-full transition-all"
             :class="[isProjectInformationVisible ? 'overflow-hidden' : 'overflow-auto']"
         >
-            <div>
-                <MainPresentationSection />
+            <MainPresentationSection />
 
-                <section
-                    v-for="section in sections"
-                    :id="section.id"
-                    :key="section.id"
-                    class="text-white absolute bg-[#222]"
-                    :class="[
-                        section.position, selectedSection === section.id ? 'selected' : '',
-                    ]"
-                >
-                    <SectionTitle
-                        v-if="selectedSection !== section.id"
-                        :begin-title="section.beginTitle"
-                        :end-title="section.endTitle"
-                        @click="() => selectedSection = section.id"
-                    />
+            <section
+                v-for="section in sections"
+                :id="section.id"
+                :key="section.id"
+                class="text-white absolute bg-[#222]"
+                :class="[
+                    section.position, selectedSection === section.id ? 'selected' : '',
+                ]"
+            >
+                <SectionTitle
+                    v-if="selectedSection !== section.id"
+                    :begin-title="section.beginTitle"
+                    :end-title="section.endTitle"
+                    @click="() => selectedSection = section.id"
+                />
 
-                    <div class="section-content">
-                        <component
-                            :is="section.component"
-                            v-if="selectedSection === section.id"
-                            @see-project-information="handleDisplayProjectInformations"
-                        />
-                    </div>
-
-                    <XCircleIcon
+                <div class="section-content">
+                    <component
+                        :is="section.component"
                         v-if="selectedSection === section.id"
-                        class="size-12 fixed top-14 right-18 cursor-pointer close-selected-section"
-                        @click="selectedSection = null"
+                        @see-project-information="handleDisplayProjectInformations"
                     />
-                </section>
-            </div>
+                </div>
+
+                <XCircleIcon
+                    v-if="selectedSection === section.id"
+                    class="size-12 fixed top-14 right-18 cursor-pointer close-selected-section"
+                    @click="selectedSection = null"
+                />
+            </section>
 
             <section
                 v-if="projectToDisplayInformation"
@@ -141,7 +139,7 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 }
 
 .main-picture {
-    background-image: url("/bombe.avif");
+    background-image: url("/chill_guy.webp");
     background-size: cover;
     background-position: center center;
     width: 40%;
@@ -179,21 +177,11 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
             &.selected {
                 z-index: 20;
                 width: 100%;
-
-                @media (min-width: 767px) {
-                    top: 0 !important;
-                    bottom: 0 !important;
-                }
-
-                @media (max-width: 767px) {
-                    top: 0 !important;
-                    bottom: 0 !important;
-                    height: auto;
-                }
+                inset-block: 0 !important;
 
                 .section-content, .close-selected-section {
                     opacity: 0;
-                    animation: appear-directly $DURATION_OPACITY_SECTION_APPEARED_ANIMATION linear $DURATION_FOR_APPEAR forwards;
+                    animation: appear-directly $DURATION_OPACITY_SECTION_APPEARED_ANIMATION ease-out $DURATION_FOR_APPEAR forwards;
                 }
             }
         }
@@ -209,12 +197,14 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 #about-me {
     @media (max-width: 767px) {
         top: calc(40% - 6px);
+        bottom: calc(60% - 12px)
     }
 }
 
 #projects {
     @media (max-width: 767px) {
         top: 60%;
+        bottom: calc(80% - 6px);
     }
 }
 

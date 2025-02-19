@@ -3,16 +3,32 @@ import type { Project } from '~/tools/types';
 import { ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon, CogIcon, UserGroupIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 
 interface Props {
-    projectToDisplay: Project,
+    projectToDisplay: Project | undefined,
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emits = defineEmits<{
     (e: 'close-project-information'): void,
     (e: 'go-to-next-project'): void,
     (e: 'go-to-previous-project'): void,
 }>();
+
+const localProjectToDisplay = ref<Project | undefined>();
+const timeToLiveAfterClosing = 750;
+function udpateLocalProjectToDisplay(newValue: Project | undefined) {
+    if (!newValue) {
+        setTimeout(() => {
+            if (!props.projectToDisplay) {
+                localProjectToDisplay.value = undefined;
+            }
+        }, timeToLiveAfterClosing);
+    } else {
+        localProjectToDisplay.value = newValue;
+    }
+}
+
+watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true });
 </script>
 
 <template>
@@ -22,7 +38,10 @@ const emits = defineEmits<{
             @click="() => emits('close-project-information')"
         />
 
-        <div class="absolute top-1/2 -translate-y-1/2 grid gap-8 grid-cols-2 w-full px-14">
+        <div
+            v-if="projectToDisplay"
+            class="absolute top-1/2 -translate-y-1/2 grid gap-8 grid-cols-2 w-full px-14"
+        >
             <div
                 class="aspect-square cursor-pointer bg-cover"
                 :style="{ backgroundImage: `url(${projectToDisplay.mainPhotoUrl})` }"
@@ -35,7 +54,7 @@ const emits = defineEmits<{
 
                 <div class="flex flex-col gap-3">
                     <div class="flex gap-4 items-center">
-                        <UserGroupIcon class="size-8" />
+                        <UserGroupIcon class="size-8 flex-shrink-0" />
                         <p class="text-xl">
                             <span class="font-semibold">Client : </span>
                             {{ projectToDisplay.client }}
@@ -43,7 +62,7 @@ const emits = defineEmits<{
                     </div>
 
                     <div class="flex gap-4 items-center">
-                        <CogIcon class="size-8" />
+                        <CogIcon class="size-8 flex-shrink-0" />
                         <p class="text-xl">
                             <span class="font-semibold">Technologies utilisées :</span>
                             {{ projectToDisplay.usedTechnologies.join(", ") }}
