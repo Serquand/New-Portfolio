@@ -16,7 +16,7 @@ function getIconToDisplay(value: number, index: number) {
 </script>
 
 <template>
-    <div class="grid sm:grid-cols-2 gap-y-4">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-y-4">
         <div
             v-for="(skill, index) in skills"
             :key="index"
