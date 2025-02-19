@@ -32,48 +32,48 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 </script>
 
 <template>
-    <div class="relative text-white flex items-center size-full">
+    <div class="relative text-white flex md:items-center size-full">
         <XCircleIcon
-            class="size-12 absolute top-8 right-12 cursor-pointer"
+            class="size-12 absolute top-4 right-4 cursor-pointer"
             @click="() => emits('close-project-information')"
         />
 
         <div
             v-if="localProjectToDisplay"
-            class="grid gap-8 grid-cols-2 w-full px-14"
+            class="flex flex-col md:flex-row gap-8 w-full px-4 pt-16 md:py-auto md:px-6"
         >
             <div
-                class="aspect-square cursor-pointer bg-cover"
+                class="aspect-square flex-shrink w-4/5 md:max-w-[50%] cursor-pointer mx-auto min-w-64 bg-cover"
                 :style="{ backgroundImage: `url(${localProjectToDisplay.mainPhotoUrl})` }"
             />
 
-            <div class="flex flex-col justify-center">
-                <h4 class="text-4xl font-bold uppercase mb-12">
+            <div class="flex flex-grow flex-col md:justify-center">
+                <h4 class="text-center md:text-start text-xl md:text-2xl font-bold uppercase mb-6">
                     {{ localProjectToDisplay.name }}
                 </h4>
 
-                <div class="flex flex-col gap-3">
-                    <div class="flex gap-4 items-center">
-                        <UserGroupIcon class="size-8 flex-shrink-0" />
-                        <p class="text-xl">
-                            <span class="font-semibold">Client : </span>
-                            {{ localProjectToDisplay.client }}
-                        </p>
-                    </div>
+                <div class="flex flex-col text-center md:text-start text-base md:text-xl gap-3 mb-8 md:mb-0 ">
+                    <p>
+                        <UserGroupIcon class="size-5 md:size-8 inline-block mr-3" />
+                        <span class="font-semibold">Client : </span>
+                        {{ localProjectToDisplay.client }}
+                    </p>
 
-                    <div class="flex gap-4 items-center">
-                        <CogIcon class="size-8 flex-shrink-0" />
-                        <p class="text-xl">
-                            <span class="font-semibold">Technologies utilisées :</span>
-                            {{ localProjectToDisplay.usedTechnologies.join(", ") }}
-                        </p>
-                    </div>
+                    <p>
+                        <CogIcon class="size-5 md:size-8 inline-block mr-3" />
+                        <span class="font-semibold">Technologies utilisées :</span>
+                        {{ localProjectToDisplay.usedTechnologies.join(", ") }}
+                    </p>
                 </div>
 
-                <hr class="text-gray-500 mb-10 mt-8">
+                <hr class="text-gray-500 my-6 hidden md:block">
 
                 <a
-                    class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10"
+                    class="
+                        bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase text-center text-lg
+                        flex justify-center items-center gap-3
+                        font-bold py-3 md:w-fit w-4/5 min-w-64 md:ml-0 mx-auto
+                    "
                     :href="localProjectToDisplay.urlToGo"
                     target="_blank"
                 >

@@ -72,7 +72,7 @@ function handleCloseProjectInformation() {
 </script>
 
 <template>
-    <main class="flex m-6 ml-0 main-container">
+    <main class="flex m-6 lg:ml-0 main-container">
         <div class="main-picture flex-shrink-0 hidden lg:block">
             <div class="main-picture-image" />
         </div>
@@ -109,7 +109,7 @@ function handleCloseProjectInformation() {
 
                 <XCircleIcon
                     v-if="selectedSection === section.id"
-                    class="size-12 fixed top-14 right-18 cursor-pointer close-selected-section"
+                    class="size-12 absolute top-4 right-4 cursor-pointer close-selected-section"
                     @click="selectedSection = null"
                 />
             </section>
@@ -150,6 +150,10 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
     bottom: 24px;
     overflow: hidden;
     left: calc(33% + 64px);
+
+    @media (max-width: 1024px) {
+        left: 24px;
+    }
 }
 
 .main-picture {

@@ -1,27 +1,11 @@
 [
     {
-        "id": "1",
-        "name": "La Coupe des Régions",
-        "urlToGo": "https://coupedesregions.com",
-        "mainPhotoUrl": "/Projects/CoupeDesRegions.png",
-        "client": "Coupe des Régions",
-        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "Express", "JavaScript", "TypeScript", "MySQL", "Sequelize"]
-    },
-    {
-        "id": "2",
-        "name": "Le Parapheur",
-        "urlToGo": "https://le-parapheur.fr",
-        "mainPhotoUrl": "/Projects/LeParapheurVitrine.png",
-        "client": "Le Parapheur",
-        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "JavaScript", "TypeScript", "Django", "Python", "PostgreSQL"]
-    },
-    {
         "id": "3",
         "name": "Ma Salle Publique",
         "urlToGo": "https://sallepublique.fr",
         "mainPhotoUrl": "/Projects/SallePublique.png",
         "client": "Le Parapheur",
-        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
+        "usedTechnologies": ["Vue", "TypeScript"]
     },
     {
         "id": "4",
@@ -29,7 +13,7 @@
         "urlToGo": "https://coupedesregions.com",
         "mainPhotoUrl": "/Projects/CoupeDesRegions.png",
         "client": "Coupe des Régions",
-        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "Express", "JavaScript", "TypeScript", "MySQL", "Sequelize"]
+        "usedTechnologies": ["Vue", "Express", "TypeScript", "MySQL", "Sequelize"]
     },
     {
         "id": "5",
@@ -37,22 +21,6 @@
         "urlToGo": "https://le-parapheur.fr",
         "mainPhotoUrl": "/Projects/LeParapheurVitrine.png",
         "client": "Le Parapheur",
-        "usedTechnologies": ["Nuxt", "Vue", "HTML", "CSS", "API", "JavaScript", "TypeScript", "Django", "Python", "PostgreSQL"]
-    },
-    {
-        "id": "6",
-        "name": "Ma Salle Publique",
-        "urlToGo": "https://sallepublique.fr",
-        "mainPhotoUrl": "/Projects/SallePublique.png",
-        "client": "Le Parapheur",
-        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
-    },
-    {
-        "id": "7",
-        "name": "Ma Salle Publique",
-        "urlToGo": "https://sallepublique.fr",
-        "mainPhotoUrl": "/Projects/SallePublique.png",
-        "client": "Le Parapheur",
-        "usedTechnologies": ["Vue", "HTML", "CSS", "JavaScript", "TypeScript"]
+        "usedTechnologies": ["Vue", "TypeScript", "Django", "Python", "PostgreSQL"]
     }
 ]
