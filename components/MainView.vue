@@ -9,7 +9,7 @@ import MyProjectsSection from './MyProjectsSection.vue';
 
 type SelectableSection = 'about-me' | 'projects ' | 'get-in-touch' | null;
 const selectedSection = ref<SelectableSection>(null);
-const projectToDisplayInformation = ref<Project | null>(projects[0]);
+const projectToDisplayInformation = ref<Project | null>(null);
 const isProjectInformationVisible = ref(false);
 
 const sections = [
@@ -64,9 +64,9 @@ function handleGoToPreviousProject() {
 }
 
 function handleCloseProjectInformation() {
-    isProjectInformationVisible.value = false;
+    projectToDisplayInformation.value = null;
     setTimeout(() => {
-        projectToDisplayInformation.value = null;
+        isProjectInformationVisible.value = false;
     }, 300);
 }
 </script>
@@ -117,16 +117,14 @@ function handleCloseProjectInformation() {
 
         <div
             class="project-information-container"
-            :class="[projectToDisplayInformation ? 'z-30' : '-z-10']"
+            :class="[isProjectInformationVisible ? 'z-30' : '-z-10']"
         >
             <section
-                v-if="projectToDisplayInformation"
                 class="absolute inset-x-0 transition-all duration-750 bg-[#222] h-full"
                 :class="[projectToDisplayInformation ? 'top-0' : 'top-[100%]']"
             >
                 <ProjectInformation
-                    v-if="projectToDisplayInformation"
-                    :project-to-display="projectToDisplayInformation"
+                    :project-to-display="projectToDisplayInformation ?? undefined"
                     @go-to-previous-project="handleGoToPreviousProject"
                     @go-to-next-project="handleGoToNextProject"
                     @close-project-information="handleCloseProjectInformation"
