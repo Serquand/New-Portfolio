@@ -25,13 +25,13 @@ defineProps<Props>();
         <span>{{ beginningDate }} - {{ endDate }}</span>
     </p>
 
-    <p>
+    <p class="sm:text-justify">
         {{ description }}
     </p>
 
     <p
         v-if="urls"
-        class="flex gap-3"
+        class="sm:flex gap-0.5 sm:gap-3"
     >
         <span
             v-for="(url, index) in urls"
@@ -48,7 +48,7 @@ defineProps<Props>();
 
             <span
                 v-if="index < urls.length - 1"
-                class="text-[#777]"
+                class="text-[#777] hidden sm:inline-block"
             >
                 |
             </span>
