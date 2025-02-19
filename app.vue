@@ -2,15 +2,15 @@
 useSeoMeta({
     title: 'Esteban Vincent - Portfolio',
     ogTitle: 'Esteban Vincent - Portfolio',
-    description: 'Vous ne savez pas par où commencer votre projet Web ? Je vous guiderai à travers les étapes de conception de votre projet !',
+    description: 'Not sure where to start with your web project? I provide expert advice and consultation. I\'ll guide you through every steps of the process.',
     ogType: 'website',
-    ogDescription: 'Vous ne savez pas par où commencer votre projet Web ? Je vous guiderai à travers les étapes de conception de votre projet !',
+    ogDescription: 'Not sure where to start with your web project? I provide expert advice and consultation. I\'ll guide you through every steps of the process.',
     ogImage: 'https://serquand.com/S.png',
     ogSiteName: 'Esteban Vincent - Portfolio',
-    ogLocale: 'fr_FR',
+    ogLocale: 'en_EN',
     ogUrl: 'https://serquand.com/S.png',
-    robots: 'index, follow', // Permet l'indexation et le suivi des liens
-    canonicalUrl: 'https://serquand.com', // URL canonique de ton site
+    robots: 'index, follow',
+    canonicalUrl: 'https://serquand.com',
     author: 'Esteban Vincent',
 });
 </script>
