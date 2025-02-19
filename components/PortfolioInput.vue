@@ -8,6 +8,7 @@ interface Props {
     id: string,
     type: 'email' | 'text',
     required: boolean,
+    max: number,
 }
 
 defineProps<Props>();
@@ -43,6 +44,7 @@ function onInput(e: any) {
                 class="border-none h-6 w-full outline-0 text-lg"
                 :value="modelValue"
                 :name="id"
+                :maxlength="max"
                 autocomplete="off"
                 :type="type"
                 :required="required"

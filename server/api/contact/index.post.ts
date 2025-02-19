@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     errors.messageContent = getErrorsForSubject(messageContent);
     if (containsErrors(errors)) {
         setResponseStatus(event, 400);
-        return { information: 'Something bad happened' };
+        return { information: errors.emailTo + "<br>" + errors.subject + "<br>" + errors.messageContent };
     }
 
     try {

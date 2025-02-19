@@ -60,13 +60,20 @@ const socialProfiles = [
 async function submitMail() {
     try {
         isLoading.value = true;
-        await $fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
             method: 'POST',
             body: JSON.stringify(contactInformations.value),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
+
+        if (!response.ok) {
+            const error = await response.json();
+            console.log(error.information);
+            throw new Error(error.information);
+        }
+
         isLoading.value = false;
         isLoadingValid.value = true;
 
@@ -74,19 +81,13 @@ async function submitMail() {
 
         contactInformations.value = { ...basisContactInformations };
         refreshmentKey.value = refreshmentKey.value + 1;
-    } catch (err: any) {
+    } catch (information: any) {
+        const error = information.message;
         isLoading.value = false;
 
-        if (err.response) {
-            try {
-                // const errorData = await err.response.json();
-                errorMessage.value = 'Something bad happened!';
-            } catch (jsonErr) {
-                console.error('Erreur de parsing JSON:', jsonErr);
-                errorMessage.value = 'Something bad happened!';
-            }
+        if (typeof error === 'string') {
+            errorMessage.value = error;
         } else {
-            console.error('Erreur:', err);
             errorMessage.value = 'Something bad happened!';
         }
     }
@@ -166,6 +167,7 @@ async function submitMail() {
                         :model-value="contactInformations.emailTo"
                         :icon="EnvelopeIcon"
                         type="email"
+                        :max="320"
                         :required="true"
                         @update:model-value="e => contactInformations.emailTo = e"
                     />
@@ -177,6 +179,7 @@ async function submitMail() {
                         :model-value="contactInformations.subject"
                         :icon="KeyIcon"
                         type="text"
+                        :max="100"
                         :required="true"
                         @update:model-value="e => contactInformations.subject = e"
                     />
@@ -201,7 +204,7 @@ async function submitMail() {
                             v-if="errorMessage"
                             class="text-red-600 text-lg mt-4"
                         >
-                            {{ errorMessage }}
+                            <span v-html="errorMessage"></span>
                         </p>
                     </div>
                 </form>
