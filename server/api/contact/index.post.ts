@@ -11,6 +11,20 @@ export default defineEventHandler(async (event) => {
         });
     }
 
+    const { USER_MAIL, PASS_MAIL, SERVICE_MAIL, ADMIN_MAIL, BOT_TOKEN } = process.env;
+    console.log(
+        'USER_MAIL =',
+        USER_MAIL,
+        '// PASS_MAIL =',
+        PASS_MAIL,
+        '// SERVICE_MAIL =',
+        SERVICE_MAIL,
+        '// ADMIN_MAIL =',
+        ADMIN_MAIL,
+        '// BOT_TOKEN =',
+        BOT_TOKEN,
+    );
+
     const { emailTo, subject, messageContent } = body;
     const errors = { emailTo: '', subject: '', messageContent: '' };
 
