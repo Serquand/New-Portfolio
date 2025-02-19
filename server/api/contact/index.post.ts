@@ -27,7 +27,6 @@ export default defineEventHandler(async (event) => {
             sendEmbedForNewMail(body),
             sendMail(body),
         ]);
-        console.log('hasSuccessfullySentEmbed =', hasSuccessfullySentEmbed, 'hasSuccessfullySentMail =', hasSuccessfullySentMail);
 
         if (hasSuccessfullySentEmbed && hasSuccessfullySentMail) {
             setResponseStatus(event, 201);
