@@ -47,8 +47,10 @@ async function sendEmbedInChannel(embed: Embed | EmbedBuilder, channel: TextBase
     }
 }
 
-export async function handleNewMailRequest(info: InfoMail): Promise<boolean> {
+export async function sendEmbedForNewMail(info: InfoMail): Promise<boolean> {
     const channel = await getChannel();
+    console.log('channel = ', channel);
+
     if (!channel || !channel.isTextBased()) {
         return false;
     }
