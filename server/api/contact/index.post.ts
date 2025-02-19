@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Bad Request',
         });
     }
+    console.log('body = ', body);
 
     const { USER_MAIL, PASS_MAIL, SERVICE_MAIL, ADMIN_MAIL, BOT_TOKEN } = process.env;
     console.log(
@@ -35,10 +36,15 @@ export default defineEventHandler(async (event) => {
         setResponseStatus(event, 400);
         return { information: 'Something bad happened' };
     }
+    console.log('Here');
 
     try {
         const response = await handleNewMailRequest(body);
+        console.log('Embed sent!');
+
         await sendMail(body);
+
+        console.log('Email sent');
 
         if (response) {
             setResponseStatus(event, 201);
