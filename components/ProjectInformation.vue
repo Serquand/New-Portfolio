@@ -15,7 +15,7 @@ const emits = defineEmits<{
 }>();
 
 const localProjectToDisplay = ref<Project | undefined>();
-const timeToLiveAfterClosing = 750;
+const timeToLiveAfterClosing = 500;
 function udpateLocalProjectToDisplay(newValue: Project | undefined) {
     if (!newValue) {
         setTimeout(() => {
@@ -39,17 +39,17 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
         />
 
         <div
-            v-if="projectToDisplay"
+            v-if="localProjectToDisplay"
             class="grid gap-8 grid-cols-2 w-full px-14"
         >
             <div
                 class="aspect-square cursor-pointer bg-cover"
-                :style="{ backgroundImage: `url(${projectToDisplay.mainPhotoUrl})` }"
+                :style="{ backgroundImage: `url(${localProjectToDisplay.mainPhotoUrl})` }"
             />
 
             <div class="flex flex-col justify-center">
                 <h4 class="text-4xl font-bold uppercase mb-12">
-                    {{ projectToDisplay.name }}
+                    {{ localProjectToDisplay.name }}
                 </h4>
 
                 <div class="flex flex-col gap-3">
@@ -57,7 +57,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
                         <UserGroupIcon class="size-8 flex-shrink-0" />
                         <p class="text-xl">
                             <span class="font-semibold">Client : </span>
-                            {{ projectToDisplay.client }}
+                            {{ localProjectToDisplay.client }}
                         </p>
                     </div>
 
@@ -65,7 +65,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
                         <CogIcon class="size-8 flex-shrink-0" />
                         <p class="text-xl">
                             <span class="font-semibold">Technologies utilisées :</span>
-                            {{ projectToDisplay.usedTechnologies.join(", ") }}
+                            {{ localProjectToDisplay.usedTechnologies.join(", ") }}
                         </p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 
                 <a
                     class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10"
-                    :href="projectToDisplay.urlToGo"
+                    :href="localProjectToDisplay.urlToGo"
                     target="_blank"
                 >
                     Preview

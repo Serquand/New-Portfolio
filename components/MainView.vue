@@ -67,7 +67,7 @@ function handleCloseProjectInformation() {
     projectToDisplayInformation.value = null;
     setTimeout(() => {
         isProjectInformationVisible.value = false;
-    }, 300);
+    }, 500);
 }
 </script>
 
@@ -120,7 +120,7 @@ function handleCloseProjectInformation() {
             :class="[isProjectInformationVisible ? 'z-30' : '-z-10']"
         >
             <section
-                class="absolute inset-x-0 transition-all duration-750 bg-[#222] h-full"
+                class="absolute inset-x-0 transition-all duration-500 bg-[#222] h-full"
                 :class="[projectToDisplayInformation ? 'top-0' : 'top-[100%]']"
             >
                 <ProjectInformation
