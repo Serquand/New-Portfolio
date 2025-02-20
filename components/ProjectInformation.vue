@@ -32,7 +32,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 </script>
 
 <template>
-    <div class="relative text-white flex md:items-center size-full">
+    <div class="relative text-white flex md:items-center landscape:items-start landscape:py-8 size-full">
         <XCircleIcon
             class="size-12 absolute top-4 right-4 cursor-pointer"
             @click="() => emits('close-project-information')"
@@ -43,7 +43,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
             class="flex flex-col md:flex-row gap-8 w-full px-4 pt-16 md:py-auto md:px-6"
         >
             <div
-                class="aspect-square flex-shrink w-4/5 md:max-w-[50%] cursor-pointer mx-auto min-w-64 bg-cover"
+                class="aspect-square flex-shrink w-4/5 md:max-w-[50%] cursor-pointer mx-auto min-w-64 bg-cover max-h-[40%]"
                 :style="{ backgroundImage: `url(${localProjectToDisplay.mainPhotoUrl})` }"
             />
 

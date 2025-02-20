@@ -22,7 +22,7 @@ function getIconToDisplay(value: number, index: number) {
             :key="index"
             class="flex justify-center items-center flex-col gap-0.5 mx-auto"
         >
-            <p class="uppercase text-lg font-semibold">
+            <p class="uppercase text-lg font-semibold text-center">
                 {{ skill.technologyLabel }}
             </p>
 

@@ -99,7 +99,7 @@ onMounted(() => {
             end-title="Me"
         />
 
-        <div class="flex px-12 gap-12">
+        <div class="flex px-6 sm:px-12 gap-12">
             <!-- <nav class="hidden lg:flex flex-col gap-5 text-[#777] transition-all justify-center">
                 <button
                     v-for="(information, index) in resumeCardsInformation"

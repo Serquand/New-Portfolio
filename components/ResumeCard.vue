@@ -29,12 +29,12 @@ const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 5
         }"
     >
         <h4
-            class="uppercase text-3xl tracking-wider text-center transition-all bg-[#111] py-8 flex gap-4 items-center justify-center text-[#daa520]"
+            class="uppercase text-2xl md:text-3xl tracking-wider text-center transition-all bg-[#111] py-8 flex gap-4 items-center justify-center text-[#daa520]"
             @click="() => !information.isVisible && emits('update-visible-section')"
         >
             <component
                 :is="information.presentationIcon"
-                class="size-7"
+                class="size-7 flex-shrink-0"
             />
             {{ information.title }}
         </h4>
