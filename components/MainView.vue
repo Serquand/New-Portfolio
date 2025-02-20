@@ -149,7 +149,7 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
     right: 24px;
     bottom: 24px;
     overflow: hidden;
-    left: calc(33% + 64px);
+    left: calc(30% + 64px);
 
     @media (max-width: 1024px) {
         left: 24px;
@@ -157,7 +157,7 @@ $DURATION_FOR_APPEAR: $DURATION_FOR_OPEN_SELECTED_SECTION - $DURATION_OPACITY_SE
 }
 
 .main-picture {
-    width: calc(33% + 24px);
+    width: calc(30% + 24px);
     margin: 0 24px;
 
     &-image {

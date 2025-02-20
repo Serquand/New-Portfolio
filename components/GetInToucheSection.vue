@@ -194,7 +194,7 @@ async function submitMail() {
                         @update:model-value="e => contactInformations.messageContent = e"
                     />
 
-                    <div>
+                    <div class="w-full flex flex-col items-center md:items-start">
                         <button class="bg-[#daa520] transition-all hover:bg-[#b0861a] uppercase w-fit text-lg flex items-center gap-3 font-bold py-3 px-10 cursor-pointer">
                             Send Email
                             <PaperAirplaneIcon class="size-7 bg-tr" />
@@ -202,7 +202,7 @@ async function submitMail() {
 
                         <p
                             v-if="errorMessage"
-                            class="text-red-600 text-lg mt-4"
+                            class="text-red-600 text-lg mt-4 text-center md:text-start w-full"
                         >
                             <span v-html="errorMessage"></span>
                         </p>
