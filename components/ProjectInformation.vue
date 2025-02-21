@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Project } from '~/tools/types';
-import { ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon, CogIcon, UserGroupIcon, XCircleIcon } from '@heroicons/vue/24/outline';
+import { ArrowLeftCircleIcon, ArrowRightStartOnRectangleIcon, ChevronLeftIcon, ChevronRightIcon, CogIcon, UserGroupIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 
 interface Props {
     projectToDisplay: Project | undefined,
@@ -33,8 +33,8 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 
 <template>
     <div class="relative text-white flex md:items-center landscape:items-start landscape:py-8 size-full">
-        <XCircleIcon
-            class="size-12 absolute top-4 right-4 cursor-pointer"
+        <ArrowLeftCircleIcon
+            class="size-12 absolute top-4 left-4 cursor-pointer"
             @click="() => emits('close-project-information')"
         />
 

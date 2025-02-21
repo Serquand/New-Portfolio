@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Project } from '~/tools/types';
-import { XCircleIcon } from '@heroicons/vue/24/outline';
+import { ArrowLeftCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 import projects from '../data/projects.json';
 import AboutMeSection from './AboutMeSection.vue';
 import GetInToucheSection from './GetInToucheSection.vue';
@@ -107,9 +107,9 @@ function handleCloseProjectInformation() {
                     />
                 </div>
 
-                <XCircleIcon
+                <ArrowLeftCircleIcon
                     v-if="selectedSection === section.id"
-                    class="size-12 absolute top-4 right-4 cursor-pointer close-selected-section"
+                    class="size-12 absolute top-4 left-4 cursor-pointer close-selected-section"
                     @click="selectedSection = null"
                 />
             </section>

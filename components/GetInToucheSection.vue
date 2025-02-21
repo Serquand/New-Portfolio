@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
-import { faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { ChatBubbleBottomCenterIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
@@ -50,10 +50,10 @@ const socialProfiles = [
         hoverColor: '#fff',
     },
     {
-        id: 'spotify',
-        faIcon: faSpotify,
-        link: 'https://open.spotify.com/user/estebanvincent.mail?si=f1fec19b03d5464c',
-        hoverColor: '#16A34A',
+        id: 'linkedin',
+        faIcon: faLinkedin,
+        link: 'https://www.linkedin.com/in/esteban-vincent-86577321b',
+        hoverColor: '#0A66C2',
     },
 ];
 
@@ -70,7 +70,6 @@ async function submitMail() {
 
         if (!response.ok) {
             const error = await response.json();
-            console.log(error.information);
             throw new Error(error.information);
         }
 
@@ -85,7 +84,7 @@ async function submitMail() {
         const error = information.message;
         isLoading.value = false;
 
-        if (typeof error === 'string') {
+        if (typeof error === 'string' && error !== '') {
             errorMessage.value = error;
         } else {
             errorMessage.value = 'Something bad happened!';
@@ -204,7 +203,7 @@ async function submitMail() {
                             v-if="errorMessage"
                             class="text-red-600 text-lg mt-4 text-center md:text-start w-full"
                         >
-                            <span v-html="errorMessage"></span>
+                            <span v-html="errorMessage" />
                         </p>
                     </div>
                 </form>
