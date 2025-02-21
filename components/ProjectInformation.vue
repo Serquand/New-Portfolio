@@ -61,7 +61,7 @@ watch(() => props.projectToDisplay, udpateLocalProjectToDisplay, { deep: true })
 
                     <p>
                         <CogIcon class="size-5 md:size-8 inline-block mr-3" />
-                        <span class="font-semibold">Technologies utilisées :</span>
+                        <span class="font-semibold">Used Technologies :</span>
                         {{ localProjectToDisplay.usedTechnologies.join(", ") }}
                     </p>
                 </div>
