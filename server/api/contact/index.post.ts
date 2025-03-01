@@ -1,4 +1,3 @@
-import { sendEmbedForNewMail } from '~/server/utils/discord';
 import sendMail from '~/server/utils/email';
 import { containsErrors, getErrorsForEmail, getErrorsForSubject } from '~/server/utils/tools';
 
@@ -19,16 +18,13 @@ export default defineEventHandler(async (event) => {
     errors.messageContent = getErrorsForSubject(messageContent);
     if (containsErrors(errors)) {
         setResponseStatus(event, 400);
-        return { information: errors.emailTo + "<br>" + errors.subject + "<br>" + errors.messageContent };
+        return { information: `${errors.emailTo}<br>${errors.subject}<br>${errors.messageContent}` };
     }
 
     try {
-        const [hasSuccessfullySentEmbed, hasSuccessfullySentMail] = await Promise.all([
-            sendEmbedForNewMail(body),
-            sendMail(body),
-        ]);
+        const hasSuccessfullySentMail = await sendMail(body);
 
-        if (hasSuccessfullySentEmbed && hasSuccessfullySentMail) {
+        if (hasSuccessfullySentMail) {
             setResponseStatus(event, 201);
             return { information: 'Le message a bien été envoyé' };
         } else {
