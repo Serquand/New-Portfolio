@@ -35,7 +35,7 @@ defineProps<Props>();
                 class="!size-6 text-gray-500"
             />
 
-            <p class="text-underline-appearence">
+            <p :class="[link ? 'text-underline-appearence' : '']">
                 {{ value }}
             </p>
         </component>
