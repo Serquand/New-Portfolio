@@ -100,22 +100,6 @@ onMounted(() => {
         />
 
         <div class="flex px-6 sm:px-12 gap-12">
-            <!-- <nav class="hidden lg:flex flex-col gap-5 text-[#777] transition-all justify-center">
-                <button
-                    v-for="(information, index) in resumeCardsInformation"
-                    :key="index"
-                    class="cursor-pointer w-60 py-3 transition-all font-bold uppercase text-lg tracking-wide hover:text-white flex items-center border justify-center gap-2"
-                    :class="[(information.isVisible) ? 'bg-[#daa520] border-[#daa520] text-white' : 'border-[#777]  hover:border-white ']"
-                    @click="() => handleUpdateVisibleSection(information.title)"
-                >
-                    <component
-                        :is="information.presentationIcon"
-                        class="size-6"
-                    />
-                    {{ information.title }}
-                </button>
-            </nav> -->
-
             <div class="flex flex-col flex-grow relative">
                 <ResumeCard
                     v-for="(information, index) in resumeCardsInformation"

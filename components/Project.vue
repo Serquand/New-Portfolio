@@ -83,7 +83,7 @@ function findFromWhereMouseEnter(event: MouseEvent): Location {
 
 <style lang="css" scoped>
 .filter-visible {
-    opacity: 1;
+    opacity: 0.95;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;

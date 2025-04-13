@@ -17,7 +17,7 @@ const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 5
 <template>
     <div
         :id="`resume-card-${information.title.toLowerCase()}`"
-        class=" absolute top-0 w-full transition-all border border-gray-500 cursor-pointer
+        class=" absolute top-0 w-full transition-all border border-gray-500
                 -translate-y-[var(--translate-y-value)] scale-[var(--scale-value)] z-[var(--z-index-value)]
         "
         :class="[!information.isVisible ? 'hover:-translate-y-[var(--hover-translate-y-value)]' : '']"
@@ -29,7 +29,10 @@ const translateValue = computed(() => (props.index - props.maximalIndex + 1) * 5
         }"
     >
         <h4
-            class="uppercase text-2xl md:text-3xl tracking-wider text-center transition-all bg-[#111] py-8 flex gap-4 items-center justify-center text-[#daa520]"
+            class=" uppercase text-2xl md:text-3xl text-center items-center justify-center
+                    transition-all bg-[#111] py-8 flex gap-4 text-[#daa520] tracking-wider
+            "
+            :class="[!information.isVisible ? 'cursor-pointer ' : '']"
             @click="() => !information.isVisible && emits('update-visible-section')"
         >
             <component

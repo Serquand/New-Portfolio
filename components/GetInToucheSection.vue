@@ -211,6 +211,10 @@ async function submitMail() {
         </div>
     </div>
 
-    <Loader v-if="isLoading" />
-    <LoaderValid v-if="isLoadingValid" />
+    <ClientOnly>
+        <Teleport to="body">
+            <Loader v-if="isLoading" />
+            <LoaderValid v-if="isLoadingValid" />
+        </Teleport>
+    </ClientOnly>
 </template>
