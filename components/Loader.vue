@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed z-50 inset-0 bg-black/70 flex items-center justify-center">
+    <div class="fixed z-[9999] inset-0 bg-black/70 flex items-center justify-center">
         <div class="loader animate-spin" />
     </div>
 </template>

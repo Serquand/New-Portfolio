@@ -8,7 +8,7 @@ useSeoMeta({
     ogImage: 'https://serquand.com/S.png',
     ogSiteName: 'Esteban Vincent - Portfolio',
     ogLocale: 'en_EN',
-    ogUrl: 'https://serquand.com/S.png',
+    ogUrl: 'https://serquand.com',
     robots: 'index, follow',
     canonicalUrl: 'https://serquand.com',
     author: 'Esteban Vincent',
