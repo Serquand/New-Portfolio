@@ -30,7 +30,7 @@ function generateContactHtml(info: InfoMail) {
 
 export default async function sendMail(info: InfoMail, hasAlreadyThePerfectContent: boolean = false) {
     const mailOptions: SendMailOptions = {
-        from: process.env.USER_MAIL as string,
+        from: `"Serquand - Développeur Web" <${process.env.USER_MAIL}>`,
         to: info.emailTo,
         subject: hasAlreadyThePerfectContent ? info.subject : `Votre message - ${info.subject}`,
         html: hasAlreadyThePerfectContent ? info.messageContent : generateContactHtml(info),
