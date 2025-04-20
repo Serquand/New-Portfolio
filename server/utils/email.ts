@@ -3,13 +3,12 @@ import type { InfoMail } from '../../tools/types';
 import nodemailer from 'nodemailer';
 
 const transporter: Transporter = nodemailer.createTransport({
-    service: process.env.SERVICE_MAIL as string,
+    host: process.env.HOST_MAIL,
+    port: process.env.PORT_MAIL,
+    secure: true,
     auth: {
         user: process.env.USER_MAIL as string,
         pass: process.env.PASS_MAIL as string,
-    },
-    tls: {
-        rejectUnauthorized: false,
     },
 });
 
