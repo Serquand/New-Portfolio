@@ -25,8 +25,8 @@ const contacts = [
     {
         label: 'Email',
         icon: EnvelopeIcon,
-        value: 'estebanvincent.mail@gmail.com',
-        link: 'mailto:estebanvincent.mail@gmail.com',
+        value: 'e.vincent@serquand.com',
+        link: 'mailto:e.vincent@serquand.com',
     },
     {
         label: 'GitHub',

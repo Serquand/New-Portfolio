@@ -24,7 +24,7 @@ function generateContactHtml(info: InfoMail) {
         Nous restons à votre disposition pour toute question ou information complémentaire.<br /><br />
         Cordialement,<br /><br />
         Esteban VINCENT,<br />
-        <a href="mailto:estebanvincent.mail@gmail.com">estebanvincent.mail@gmail.com</a><br />
+        <a href="mailto:e.vincent@serquand.com">e.vincent@serquand.com</a><br />
         <a href="https://serquand.com">https://serquand.com</a>
     </p>`;
 }
