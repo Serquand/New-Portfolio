@@ -10,13 +10,12 @@ useSeoMeta({
     ogLocale: 'en_EN',
     ogUrl: 'https://serquand.com',
     robots: 'index, follow',
-    canonicalUrl: 'https://serquand.com',
     author: 'Esteban Vincent',
 });
 </script>
 
 <template>
-    <NuxtPage />
+    <MainView />
 </template>
 
 <style lang="scss">
