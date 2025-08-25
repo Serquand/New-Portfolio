@@ -2,6 +2,7 @@
 import type { InfoMail } from '~/tools/types';
 import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { ChatBubbleBottomCenterIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/vue/24/outline';
 
 const basisContactInformations: InfoMail = {
@@ -55,6 +56,12 @@ const socialProfiles = [
         link: 'https://www.linkedin.com/in/esteban-vincent-86577321b',
         hoverColor: '#0A66C2',
     },
+    {
+        id: 'leetcode',
+        faIcon: faCode,
+        link: 'https://leetcode.com/u/Serquand',
+        hoverColor: '#FFA116',
+    },
 ];
 
 async function submitMail() {
@@ -63,9 +70,7 @@ async function submitMail() {
         const response = await fetch('/api/contact', {
             method: 'POST',
             body: JSON.stringify(contactInformations.value),
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if (!response.ok) {
@@ -131,7 +136,7 @@ async function submitMail() {
                         >
                             <font-awesome
                                 :icon="profile.faIcon"
-                                class="!size-8 text-gray-500 group-hover:transition-all group-hover:text-[var(--hoverColor)]"
+                                class="!size-8 text-gray-500 group-hover:transition-all group-hover:text-[var(--hoverColor)] group-hover:scale-120"
                                 :style="{ '--hoverColor': profile.hoverColor }"
                             />
                         </a>
