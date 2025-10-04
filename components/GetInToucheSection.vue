@@ -4,6 +4,7 @@ import ContactItem from '@/components/ContactItem.vue';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { ChatBubbleBottomCenterIcon, EnvelopeIcon, KeyIcon, MapPinIcon, PaperAirplaneIcon, PhoneIcon } from '@heroicons/vue/24/outline';
+import IconRootme from './icons/RootMe.vue';
 
 const basisContactInformations: InfoMail = {
     emailTo: '',
@@ -61,6 +62,12 @@ const socialProfiles = [
         faIcon: faCode,
         link: 'https://leetcode.com/u/Serquand',
         hoverColor: '#FFA116',
+    },
+    {
+        id: 'root-me',
+        icon: IconRootme,
+        link: 'https://www.root-me.org/Serkan-579341',
+        hoverColor: '#009918',
     },
 ];
 
@@ -135,8 +142,16 @@ async function submitMail() {
                             class="group"
                         >
                             <font-awesome
+                                v-if="profile.faIcon"
                                 :icon="profile.faIcon"
                                 class="!size-8 text-gray-500 group-hover:transition-all group-hover:text-[var(--hoverColor)] group-hover:scale-120"
+                                :style="{ '--hoverColor': profile.hoverColor }"
+                            />
+
+                            <component
+                                :is="profile.icon"
+                                v-else
+                                class="size-8 text-gray-500 group-hover:transition-all group-hover:text-[var(--hoverColor)] group-hover:scale-120"
                                 :style="{ '--hoverColor': profile.hoverColor }"
                             />
                         </a>
