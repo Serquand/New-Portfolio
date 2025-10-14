@@ -32,6 +32,14 @@
         "value": 4
     },
     {
+        "technologyLabel": "Java Spring",
+        "value": 2.5
+    },
+    {
+        "technologyLabel": "Spring Boot",
+        "value": 2.5
+    },
+    {
         "technologyLabel": "React",
         "value": 4
     },
