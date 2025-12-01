@@ -33,14 +33,18 @@
     },
     {
         "technologyLabel": "Java Spring",
-        "value": 2.5
+        "value": 3.5
     },
     {
         "technologyLabel": "Spring Boot",
-        "value": 2.5
+        "value": 3.5
     },
     {
         "technologyLabel": "React",
+        "value": 4
+    },
+    {
+        "technologyLabel": "Angular",
         "value": 4
     },
     {
@@ -61,11 +65,11 @@
     },
     {
         "technologyLabel": "Node.js",
-        "value": 4.5
+        "value": 5
     },
     {
         "technologyLabel": "Express.js",
-        "value": 4.5
+        "value": 5
     },
     {
         "technologyLabel": "NestJS",
@@ -108,12 +112,8 @@
         "value": 3.5
     },
     {
-        "technologyLabel": "Terraform",
-        "value": 2.5
-    },
-    {
         "technologyLabel": "Jenkins",
-        "value": 3
+        "value": 3.5
     },
     {
         "technologyLabel": "Ansible",
