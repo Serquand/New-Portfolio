@@ -3,6 +3,7 @@ import type { InfoMail } from '../../tools/types';
 import nodemailer from 'nodemailer';
 
 const transporter: Transporter = nodemailer.createTransport({
+    // @ts-ignore
     host: process.env.HOST_MAIL,
     port: process.env.PORT_MAIL,
     secure: true,
