@@ -22,13 +22,5 @@
         "mainPhotoUrl": "/Projects/LeParapheurVitrine.png",
         "client": "Le Parapheur",
         "usedTechnologies": ["Vue", "TypeScript", "Django", "Python", "PostgreSQL"]
-    },
-    {
-        "id": "4",
-        "name": "Adolphe Monticelli",
-        "urlToGo": "https://adolphe-monticelli.org/",
-        "mainPhotoUrl": "/Projects/AdolpheMonticelli.png",
-        "client": "Marc Stammegna",
-        "usedTechnologies": ["React", "TypeScript", "Stripe", "NestJS", "TypeORM"]
     }
 ]
